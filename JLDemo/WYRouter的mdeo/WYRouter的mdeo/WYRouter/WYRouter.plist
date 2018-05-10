@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>example</key>
+	<dict>
+		<key>routerNumber</key>
+		<string>路由编号-必填</string>
+		<key>routerName</key>
+		<string>路由名称-必填</string>
+		<key>routerDesc</key>
+		<string>路由描述信息-非必填 </string>
+		<key>routerLimit</key>
+		<dict>
+			<key>identity</key>
+			<string>路由应用范围 0:采购端+商户端 2:采购端 4:商户端；其他参数将路由将不允许跳转并打印相关error</string>
+			<key>isLogin</key>
+			<string>是否需要登录 0:不需要,1:需要</string>
+			<key>isOpenShop</key>
+			<string>是否需要开店 0:不需要,1:需要 （需要开店一定是登录的，isLogin设置无效，最好设置1）</string>
+		</dict>
+		<key>routerKeys</key>
+		<dict>
+			<key>路由参数对应的键 </key>
+			<string>控制器对应需要赋值的属性值  </string>
+		</dict>
+		<key>viewController</key>
+		<dict>
+			<key>vcName</key>
+			<string>必填  控制器类名</string>
+			<key>sbName</key>
+			<string>非必填  storyBaoard对应的name</string>
+			<key>sbIdentifier</key>
+			<string>非必填  storyBaoard中控制器的identifier</string>
+		</dict>
+	</dict>
+	<key>public</key>
+	<array>
+		<dict>
+			<key>routerNumber</key>
+			<integer>0</integer>
+			<key>routerName</key>
+			<string></string>
+			<key>routerDesc</key>
+			<string></string>
+			<key>identity</key>
+			<integer>0</integer>
+			<key>viewController</key>
+			<string></string>
+			<key>isStoryBoard</key>
+			<false/>
+			<key>storyBoard</key>
+			<dict>
+				<key>name</key>
+				<string></string>
+				<key>identifier</key>
+				<string></string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -1,0 +1,335 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2B071C392015CB4F00B5BD63 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B071C382015CB4F00B5BD63 /* AppDelegate.m */; };
+		2B071C3C2015CB4F00B5BD63 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B071C3B2015CB4F00B5BD63 /* ViewController.m */; };
+		2B071C3F2015CB4F00B5BD63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B071C3D2015CB4F00B5BD63 /* Main.storyboard */; };
+		2B071C412015CB4F00B5BD63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B071C402015CB4F00B5BD63 /* Assets.xcassets */; };
+		2B071C442015CB4F00B5BD63 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B071C422015CB4F00B5BD63 /* LaunchScreen.storyboard */; };
+		2B071C472015CB4F00B5BD63 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B071C462015CB4F00B5BD63 /* main.m */; };
+		2B071C4F2015CB5D00B5BD63 /* WYIntroduceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B071C4D2015CB5D00B5BD63 /* WYIntroduceViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2B071C342015CB4F00B5BD63 /* IntroduceViewController的demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IntroduceViewController的demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B071C372015CB4F00B5BD63 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		2B071C382015CB4F00B5BD63 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		2B071C3A2015CB4F00B5BD63 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		2B071C3B2015CB4F00B5BD63 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		2B071C3E2015CB4F00B5BD63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2B071C402015CB4F00B5BD63 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2B071C432015CB4F00B5BD63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2B071C452015CB4F00B5BD63 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2B071C462015CB4F00B5BD63 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2B071C4D2015CB5D00B5BD63 /* WYIntroduceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYIntroduceViewController.m; sourceTree = "<group>"; };
+		2B071C4E2015CB5D00B5BD63 /* WYIntroduceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYIntroduceViewController.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2B071C312015CB4F00B5BD63 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2B071C2B2015CB4F00B5BD63 = {
+			isa = PBXGroup;
+			children = (
+				2B071C362015CB4F00B5BD63 /* IntroduceViewController的demo */,
+				2B071C352015CB4F00B5BD63 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2B071C352015CB4F00B5BD63 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2B071C342015CB4F00B5BD63 /* IntroduceViewController的demo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2B071C362015CB4F00B5BD63 /* IntroduceViewController的demo */ = {
+			isa = PBXGroup;
+			children = (
+				2B071C4E2015CB5D00B5BD63 /* WYIntroduceViewController.h */,
+				2B071C4D2015CB5D00B5BD63 /* WYIntroduceViewController.m */,
+				2B071C372015CB4F00B5BD63 /* AppDelegate.h */,
+				2B071C382015CB4F00B5BD63 /* AppDelegate.m */,
+				2B071C3A2015CB4F00B5BD63 /* ViewController.h */,
+				2B071C3B2015CB4F00B5BD63 /* ViewController.m */,
+				2B071C3D2015CB4F00B5BD63 /* Main.storyboard */,
+				2B071C402015CB4F00B5BD63 /* Assets.xcassets */,
+				2B071C422015CB4F00B5BD63 /* LaunchScreen.storyboard */,
+				2B071C452015CB4F00B5BD63 /* Info.plist */,
+				2B071C462015CB4F00B5BD63 /* main.m */,
+			);
+			path = "IntroduceViewController的demo";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2B071C332015CB4F00B5BD63 /* IntroduceViewController的demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2B071C4A2015CB4F00B5BD63 /* Build configuration list for PBXNativeTarget "IntroduceViewController的demo" */;
+			buildPhases = (
+				2B071C302015CB4F00B5BD63 /* Sources */,
+				2B071C312015CB4F00B5BD63 /* Frameworks */,
+				2B071C322015CB4F00B5BD63 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "IntroduceViewController的demo";
+			productName = "IntroduceViewController的demo";
+			productReference = 2B071C342015CB4F00B5BD63 /* IntroduceViewController的demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2B071C2C2015CB4F00B5BD63 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = yangjianliang;
+				TargetAttributes = {
+					2B071C332015CB4F00B5BD63 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 2B071C2F2015CB4F00B5BD63 /* Build configuration list for PBXProject "IntroduceViewController的demo" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2B071C2B2015CB4F00B5BD63;
+			productRefGroup = 2B071C352015CB4F00B5BD63 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2B071C332015CB4F00B5BD63 /* IntroduceViewController的demo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2B071C322015CB4F00B5BD63 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2B071C442015CB4F00B5BD63 /* LaunchScreen.storyboard in Resources */,
+				2B071C412015CB4F00B5BD63 /* Assets.xcassets in Resources */,
+				2B071C3F2015CB4F00B5BD63 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2B071C302015CB4F00B5BD63 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2B071C3C2015CB4F00B5BD63 /* ViewController.m in Sources */,
+				2B071C472015CB4F00B5BD63 /* main.m in Sources */,
+				2B071C4F2015CB5D00B5BD63 /* WYIntroduceViewController.m in Sources */,
+				2B071C392015CB4F00B5BD63 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		2B071C3D2015CB4F00B5BD63 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2B071C3E2015CB4F00B5BD63 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2B071C422015CB4F00B5BD63 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2B071C432015CB4F00B5BD63 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2B071C482015CB4F00B5BD63 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		2B071C492015CB4F00B5BD63 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2B071C4B2015CB4F00B5BD63 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2VZHX58HUJ;
+				INFOPLIST_FILE = "IntroduceViewController的demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.microants.haishi.IntroduceViewController-demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2B071C4C2015CB4F00B5BD63 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2VZHX58HUJ;
+				INFOPLIST_FILE = "IntroduceViewController的demo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.microants.haishi.IntroduceViewController-demo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2B071C2F2015CB4F00B5BD63 /* Build configuration list for PBXProject "IntroduceViewController的demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2B071C482015CB4F00B5BD63 /* Debug */,
+				2B071C492015CB4F00B5BD63 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2B071C4A2015CB4F00B5BD63 /* Build configuration list for PBXNativeTarget "IntroduceViewController的demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2B071C4B2015CB4F00B5BD63 /* Debug */,
+				2B071C4C2015CB4F00B5BD63 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2B071C2C2015CB4F00B5BD63 /* Project object */;
+}

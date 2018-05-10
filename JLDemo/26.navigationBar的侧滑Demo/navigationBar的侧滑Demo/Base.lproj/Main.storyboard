@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="b07-BP-haT">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--隐藏导航栏-->
+        <scene sceneID="9Fq-dr-nee">
+            <objects>
+                <viewController id="3il-8k-Yni" customClass="AViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UIT-FE-hsn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f3N-Y1-93e">
+                                <rect key="frame" x="74" y="221" width="190" height="115"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="继续隐藏系统导航栏"/>
+                                <connections>
+                                    <segue destination="YUs-63-P9h" kind="show" id="xaB-LI-aRZ"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AOC-bQ-C8I">
+                                <rect key="frame" x="0.0" y="64" width="375" height="64"/>
+                                <color key="backgroundColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="vpD-zL-Awp"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p2j-s3-Auw">
+                                <rect key="frame" x="74" y="373" width="190" height="115"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="不隐藏系统导航栏"/>
+                                <connections>
+                                    <segue destination="kyc-Q7-tNk" kind="show" id="nlZ-yX-BDF"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="AOC-bQ-C8I" firstAttribute="top" secondItem="UIT-FE-hsn" secondAttribute="top" constant="64" id="AYw-tt-t5S"/>
+                            <constraint firstAttribute="trailing" secondItem="AOC-bQ-C8I" secondAttribute="trailing" id="MFR-K1-CoH"/>
+                            <constraint firstItem="AOC-bQ-C8I" firstAttribute="leading" secondItem="UIT-FE-hsn" secondAttribute="leading" id="ZbD-UM-fTf"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="2oC-vn-cwZ"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="隐藏导航栏" id="YHJ-fl-exu"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8OJ-Z5-v9c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1349.5999999999999" y="196.55172413793105"/>
+        </scene>
+        <!--不隐藏系统导航栏-->
+        <scene sceneID="8JK-MJ-PDW">
+            <objects>
+                <viewController id="kyc-Q7-tNk" customClass="CViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="S5T-xk-51a">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="9ZO-zx-ZLv"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="不隐藏系统导航栏" id="SXP-gS-6XP"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bh6-fM-JHX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2176" y="587"/>
+        </scene>
+        <!--继续隐藏系统导航栏-->
+        <scene sceneID="Fz7-Li-WeI">
+            <objects>
+                <viewController id="YUs-63-P9h" customClass="BViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yRO-A7-Blz">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="JIV-36-3Ut"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="继续隐藏系统导航栏" id="Edh-cr-VBO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FJW-qe-ANI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2179" y="-92"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hGC-6R-Quo">
+            <objects>
+                <navigationController id="b07-BP-haT" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="AOt-Em-12B">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="IdU-h3-PIz" kind="relationship" relationship="rootViewController" id="Frg-dF-hne"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Pz-eS-S2s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-358" y="198"/>
+        </scene>
+        <!--rootVC-->
+        <scene sceneID="m9Q-SB-UvE">
+            <objects>
+                <viewController id="IdU-h3-PIz" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="we8-ii-YqY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="63q-Lz-7oK">
+                                <rect key="frame" x="76" y="206" width="222" height="192"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.083063533105262821" blue="0.19199534855627187" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="3il-8k-Yni" kind="show" id="1Fx-1q-iBY"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="YMg-l3-cXR"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="rootVC" id="cOx-in-cke"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nOO-8W-0w1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="444" y="193.85307346326837"/>
+        </scene>
+    </scenes>
+</document>
