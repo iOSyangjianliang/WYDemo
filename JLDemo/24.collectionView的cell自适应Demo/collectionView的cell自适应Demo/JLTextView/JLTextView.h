@@ -1,28 +1,27 @@
 //
 //  JLTextView.h
-//  CMInputView
+//  JLTextView
 //
 //  Created by 杨建亮 on 2018/4/26.
-//  Copyright © 2018年 CrabMan. All rights reserved.
+//  Copyright © 2018年 yangjianliang. All rights reserved.
 //
 /**
  JLTextView继承UITextView
  
  1.新增了占位文字、及占位文字颜色;
  2.新增最大限制字符、及字符改变回调;
- 3.新增自适应高度及高度改变回调,
-   设置最小行数、最大行数,
-   可获取最小行数、最大行数高度,
-   可获取当前文本的行高，文本行数;
- 4.基于UITextView的typingAttributes富文本设置扩展支持:
-   最小行高、行间距,字体
-   同时兼容对应的自适应高度、
-   占位文字大小、位置与富文本保持一致、
-   富文本光标位置偏移进行处理，
-   contentInset设置无效;
+ 3.a新增自适应高度及高度改变回调,
+   b设置最小行数、最大行数,
+   c可获取最小行数、最大行数所需高度,
+   d可获取当前文本的行高，文本行数;
+ 4.a基于UITextView的typingAttributes富文本设置扩展支持:
+   b最小行高、行间距,字体
+   c同时兼容3中对应的自适应高度全部功能
+   d占位文字大小、位置与富文本保持一致、
+   e富文本光标位置偏移进行处理，
+   f父类contentInset限制设置无效;
 
  */
-
 
 #import <UIKit/UIKit.h>
 
@@ -41,6 +40,7 @@ typedef void(^JLTextHeightChangedHandler)(JLTextView *view,CGFloat textHeight);
 //占位文字颜色
 @property (nonatomic, strong) UIColor *placeholderColor;
 
+#pragma mark 自适应高度
 //default is NO,自适应高度，默认为minNumberOfLines高度。设置YES初始化后Frame的高度将由minNumberOfLines决定
 @property (nonatomic, assign) BOOL sizeToFitHight;
 //default is 1, 最小行数[0 NSUIntegerMax],建议在sizeToFitHight设置之前设置
@@ -51,9 +51,9 @@ typedef void(^JLTextHeightChangedHandler)(JLTextView *view,CGFloat textHeight);
 @property (nonatomic, assign, readonly) CGFloat minTextHeight;
 //获取自适应高度时的最大行数高度
 @property (nonatomic, assign, readonly) CGFloat maxTextHeight;
-//获取自适应高度时文本的行高
+//获取文本的行高
 @property (nonatomic, assign, readonly) CGFloat rowHeight;
-//获取自适应高度时当前文本行数
+//获取当前文本行数
 @property (nonatomic, assign, readonly) NSUInteger curryLines;
 
 // 文本改变Block回调.
@@ -69,16 +69,15 @@ typedef void(^JLTextHeightChangedHandler)(JLTextView *view,CGFloat textHeight);
 //字符将达到设置最大值截断策略
 @property (nonatomic, assign) CharacterTruncationPolicy characterPolicy;
 
-#pragma mark 字符限制
-
+#pragma mark 提供两种简便快捷设置富文本方式，也可使用父类typingAttributes去实现
 //基于UITextView的typingAttributes富文本设置行高、字体
 - (void)setMinimumLineHeight:(CGFloat)lineHeight font:(UIFont *)font textColor:(UIColor *)color;
-//基于UITextView的typingAttributes富文本设置行高、行间距,字体
+//基于UITextView的typingAttributes富文本设置行高、行间距,字体、
 - (void)setMinimumLineHeight:(CGFloat)lineHeight lineSpacing:(CGFloat)lineSpacing font:(UIFont *)font textColor:(UIColor *)color;
 
 @end
 
-#pragma mark UITextView扩展
+#pragma mark UITextView大小计算扩展
 @interface UITextView (JLSizeCalculate)
 //获取textView文本内容实际排版宽度
 - (CGFloat)jl_getTextViewContentTextWidth;
