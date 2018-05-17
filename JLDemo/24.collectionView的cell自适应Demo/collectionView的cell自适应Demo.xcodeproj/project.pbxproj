@@ -52,6 +52,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B05EF0520AD7BA300781145 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2B9809FD20AC162500DFDCB7 /* AACollectionReusableView.h */,
+				2B9809FE20AC162500DFDCB7 /* AACollectionReusableView.m */,
+				2B9809FF20AC162500DFDCB7 /* AACollectionReusableView.xib */,
+				2B9809F820AC15E300DFDCB7 /* AACollectionViewCell.h */,
+				2B9809F920AC15E300DFDCB7 /* AACollectionViewCell.m */,
+				2B9809FA20AC15E300DFDCB7 /* AACollectionViewCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		2B9809D620AC159000DFDCB7 = {
 			isa = PBXGroup;
 			children = (
@@ -76,12 +89,7 @@
 				2B9809E320AC159000DFDCB7 /* AppDelegate.m */,
 				2B9809E520AC159000DFDCB7 /* ViewController.h */,
 				2B9809E620AC159000DFDCB7 /* ViewController.m */,
-				2B9809FD20AC162500DFDCB7 /* AACollectionReusableView.h */,
-				2B9809FE20AC162500DFDCB7 /* AACollectionReusableView.m */,
-				2B9809FF20AC162500DFDCB7 /* AACollectionReusableView.xib */,
-				2B9809F820AC15E300DFDCB7 /* AACollectionViewCell.h */,
-				2B9809F920AC15E300DFDCB7 /* AACollectionViewCell.m */,
-				2B9809FA20AC15E300DFDCB7 /* AACollectionViewCell.xib */,
+				2B05EF0520AD7BA300781145 /* Views */,
 				2B9809E820AC159000DFDCB7 /* Main.storyboard */,
 				2B9809EB20AC159100DFDCB7 /* Assets.xcassets */,
 				2B9809ED20AC159100DFDCB7 /* LaunchScreen.storyboard */,
@@ -320,7 +328,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2VZHX58HUJ;
 				INFOPLIST_FILE = "collectionView的cell自适应Demo/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -338,7 +346,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2VZHX58HUJ;
 				INFOPLIST_FILE = "collectionView的cell自适应Demo/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

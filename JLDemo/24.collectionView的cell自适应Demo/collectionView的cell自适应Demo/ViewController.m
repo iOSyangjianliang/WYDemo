@@ -8,12 +8,14 @@
 
 #import "ViewController.h"
 #import "AACollectionViewCell.h"
+#import "AACollectionReusableView.h"
 
-@interface ViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+@interface ViewController ()<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout,UITextViewDelegate>
 {
-    NSMutableArray *_arrayM;
     UICollectionView *_collectionView;
     UICollectionViewFlowLayout *_flowLayout;
+    
+    NSString *_textFiledStr;
 }
 @end
 
@@ -21,11 +23,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _textFiledStr = @"";
     
     [self buildUI];
     
-    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 60)];
-    btn.backgroundColor = [UIColor blueColor];
+    
+    
+    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width-90,20, 90, 40)];
+    btn.backgroundColor = [UIColor purpleColor];
+    [btn setTitle:@"收起键盘" forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(touchesBtn) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
 }
@@ -37,13 +43,17 @@
 {
     _flowLayout = [[UICollectionViewFlowLayout alloc] init];
     _flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
-        _flowLayout.itemSize = CGSizeMake(100, 300);
+//        _flowLayout.itemSize = CGSizeMake(100, 300);
     //        _flowLayout.headerReferenceSize = CGSizeMake(self.view.frame.size.width, 50);
     //        _flowLayout.footerReferenceSize = CGSizeMake(self.view.frame.size.width, 50);
     //    _flowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
     
+    //自适应cell调整不能使用组头，不然会有组头尾布局问题
     //在iOS8.1-8.2中不能使用estimatedItemSize, bug:http://www.bubuko.com/infodetail-1686310.html
+    //NSLog(@"%@",NSStringFromCGSize(UICollectionViewFlowLayoutAutomaticSize)); //=CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX)
+    
     _flowLayout.estimatedItemSize = CGSizeMake(100, 300);//  UICollectionViewFlowLayoutAutomaticSize只支持10+
+    
     
     _collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:_flowLayout];
     _collectionView.dataSource = self;
@@ -64,53 +74,45 @@
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return 2;
+    return 20;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return  3;//_arrayM.count;
+    return  3;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    NSLog(@">>>>>>>%s",__FUNCTION__);
-    
     AACollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"RID" forIndexPath:indexPath];
     cell.backgroundColor = [UIColor purpleColor];
+//    if (indexPath.section==0&& indexPath.row==0) {
+//        cell.jltextView.text = _textFiledStr;
+//    }else{
+//        cell.jltextView.text = @"";
+//    }
+    
     cell.flowLayout = _flowLayout;
+    cell.jltextView.delegate = self;
     return cell;
 }
-
-#pragma mark - 返回item大小
-//- (CGSize )collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+//#pragma mark 设置头尾视图的大小
+//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 //{
-//    NSLog(@">>>>>>>%s",__FUNCTION__);
-//    return CGSizeMake(100, 100);
-//
-//    //    NSLog(@"%@",NSStringFromCGSize(UICollectionViewFlowLayoutAutomaticSize));
-//    //    return UICollectionViewFlowLayoutAutomaticSize;
+//    return CGSizeMake(self.view.frame.size.width, 50);
 //}
-
-#pragma mark 设置头尾视图的大小
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
-{
-    return CGSizeMake(self.view.frame.size.width, 50);
-    
-}
-- (CGSize )collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
-{
-    return CGSizeMake(self.view.frame.size.width, 50);
-}
+//- (CGSize )collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
+//{
+//    return  CGSizeMake(self.view.frame.size.width, 50);
+//}
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    return UIEdgeInsetsMake(20, 0, 70, 0);
+    return UIEdgeInsetsMake(40, 0, 40, 0);
 }
 #pragma mark 返回头尾视图
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
-    AACollectionViewCell *view = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"QAQ" forIndexPath:indexPath];
+    AACollectionReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"QAQ" forIndexPath:indexPath];
     if (kind == UICollectionElementKindSectionFooter) {
         UILabel *footLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
         footLabel.text = @"下雨了，该买船了";
@@ -131,6 +133,17 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
+}
+
+-(void)textViewDidEndEditing:(UITextView *)textView
+{
+    _textFiledStr = [NSString stringWithFormat:@"%@", textView.text];
+//    NSLog(@"_textFiledStr=%@",_textFiledStr);
+}
+-(void)textViewDidChange:(UITextView *)textView
+{
+    JLTextView *textV = (JLTextView *)textView;
+    NSLog(@"%ld",textV.curryLines);
 }
 @end
 

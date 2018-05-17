@@ -12,6 +12,6 @@
 @interface AACollectionViewCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet JLTextView *jltextView;
 
-@property (weak, nonatomic) UICollectionViewFlowLayout *flowLayout;
+@property (nonatomic, weak) UICollectionViewFlowLayout *flowLayout;
 
 @end
