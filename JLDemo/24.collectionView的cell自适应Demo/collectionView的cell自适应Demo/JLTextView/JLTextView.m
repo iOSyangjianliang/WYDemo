@@ -106,9 +106,7 @@ static CGFloat const defaultTextHeight = -1.f;
 -(NSUInteger)curryLines
 {
     if (self.text&& ![self.text isEqualToString:@""]) {
-        CGFloat  width = [self jl_getTextViewContentTextWidth];
-        CGFloat textHeight =  [self.text boundingRectWithSize:CGSizeMake(width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:self.typingAttributes context:nil].size.height;
-
+        CGFloat textHeight = [self jl_getTextHeightInTextView:self.text];
         CGFloat lineSpacingSingleRow = 0.f;
         if (textHeight>(_rowHeight+_curryLineSpacing)) { //单行时计算的textHeight会包含行间距
             lineSpacingSingleRow = _curryLineSpacing;
@@ -147,7 +145,7 @@ static CGFloat const defaultTextHeight = -1.f;
         
         CGFloat heightText = [self jl_getTextHeightInTextView:self.text];
         CGFloat height = [self jl_getTextViewHeightWithTextHeight:heightText];
-        if (heightText<=(self.rowHeight+self.curryLineSpacing)) { //单行时计算的textHeight会包含行间距
+        if (heightText<= (self.rowHeight+self.curryLineSpacing)) { //单行时计算的textHeight会包含行间距
             height -= self.curryLineSpacing;
         }
         
@@ -408,7 +406,7 @@ static CGFloat const defaultTextHeight = -1.f;
                             + self.contentInset.bottom
                             + self.textContainerInset.top
                             + self.textContainerInset.bottom);//+self.textContainer.lineFragmentPadding/*top*//*+self*//*there is no bottom padding*/);
-    CGFloat height = ceilf(textHeight+broadHeight);
+    CGFloat height = textHeight+broadHeight;
     NSLog(@"height=%f",height);
     return height;
 }
