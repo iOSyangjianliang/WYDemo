@@ -103,21 +103,21 @@ static CGFloat const defaultTextHeight = -1.f;
     CGFloat heightMAX = self.rowHeight* self.maxNumberOfLines+self.curryLineSpacing* (self.maxNumberOfLines-1) + self.textContainerInset.top + self.textContainerInset.bottom+self.contentInset.top+self.contentInset.bottom;
     return ceilf(heightMAX);
 }
--(NSUInteger)curryLines
-{
-    if (self.text&& ![self.text isEqualToString:@""]) {
-        CGFloat textHeight = [self jl_getTextHeightInTextView:self.text];
-        CGFloat lineSpacingSingleRow = 0.f;
-        if (textHeight>(_rowHeight+_curryLineSpacing)) { //单行时计算的textHeight会包含行间距
-            lineSpacingSingleRow = _curryLineSpacing;
-        }
-        CGFloat Lines = (textHeight+lineSpacingSingleRow)/(_rowHeight+_curryLineSpacing);
-        NSLog(@"jl__curryLines_textHeight=%f",textHeight);
-        NSLog(@"jl__curryLines=%f",Lines);
-        return ceilf(Lines);
-    }
-    return 0;
-}
+//-(NSUInteger)curryLines
+//{
+//    if (self.text&& ![self.text isEqualToString:@""]) {
+//        CGFloat textHeight = [self jl_getTextHeightInTextView:self.text];
+//        CGFloat lineSpacingSingleRow = 0.f;
+//        if (textHeight>(_rowHeight+_curryLineSpacing)) { //单行时计算的textHeight会包含行间距
+//            lineSpacingSingleRow = _curryLineSpacing;
+//        }
+//        CGFloat Lines = (textHeight+lineSpacingSingleRow)/(_rowHeight+_curryLineSpacing);
+//        NSLog(@"jl__curryLines_textHeight=%f",textHeight);
+//        NSLog(@"jl__curryLines=%f",Lines);
+//        return ceilf(Lines);
+//    }
+//    return 0;
+//}
 -(void)setMaxLength:(NSUInteger)maxLength
 {
     _maxLength = maxLength;
@@ -125,7 +125,7 @@ static CGFloat const defaultTextHeight = -1.f;
         self.text = [self.text substringToIndex:_maxLength]; // 截取最大限制字符数.
     }
 }
-#pragma mark 自适应高度
+#pragma mark - 自适应高度
 -(void)sizeToFitMinLinesHightWhenNoText
 {
     if (self.sizeToFitHight && self.text.length==0) {
@@ -143,10 +143,13 @@ static CGFloat const defaultTextHeight = -1.f;
 {
     if (self.sizeToFitHight) {
         
-        CGFloat heightText = [self jl_getTextHeightInTextView:self.text];
+//        CGFloat heightText = [self jl_getTextHeightInTextView:self.text];
+        CGFloat heightText  = [self calculateTextHeight];
+        NSLog(@"jl_heightText_self.text = %@",self.text);
+        NSLog(@"jl_heightText = %f",heightText);
         CGFloat height = [self jl_getTextViewHeightWithTextHeight:heightText];
-        if (heightText<= (self.rowHeight+self.curryLineSpacing)) { //单行时计算的textHeight会包含行间距
-            height -= self.curryLineSpacing;
+        if (self.minNumberOfLines==1&& heightText<= (self.rowHeight+self.curryLineSpacing)) { //单行时计算的textHeight会包含行间距
+//            height -= self.curryLineSpacing;
         }
         
         if (self.lastTextHeight != height) { // 字符串高度改变时调整frame高度
@@ -176,7 +179,32 @@ static CGFloat const defaultTextHeight = -1.f;
         }
     }
 }
-#pragma mark 限制字符输入
+- (CGFloat )calculateTextHeight
+{
+    
+    NSMutableDictionary *dictM = [NSMutableDictionary dictionaryWithDictionary:self.typingAttributes];
+    NSMutableParagraphStyle *attName =  [[dictM objectForKey:NSParagraphStyleAttributeName] mutableCopy];
+    attName.lineSpacing = 0.f;//为了解决bug:设置行间距系统计算第一行会加上行间距，第二行时不加，第三行后又加
+    [dictM setObject:attName forKey:NSParagraphStyleAttributeName];
+    NSLog(@"%@",self.typingAttributes);
+    
+    CGFloat  width = [self jl_getTextViewContentTextWidth];
+    CGFloat textHeight =  [self.text boundingRectWithSize:CGSizeMake(width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:dictM context:nil].size.height;
+    
+    NSLog(@"calcul_textHeight=%f",textHeight);
+    
+    CGFloat Lines = textHeight/self.rowHeight;
+    _curryLines = Lines;
+    NSLog(@"calcul_curryLines%f",Lines);
+    
+    textHeight = textHeight+self.curryLineSpacing*(Lines-1);
+    NSLog(@"calcul_FF_textHeight%f",textHeight);
+
+    return textHeight;
+    
+    
+}
+//限制字符输入
 -(void)limitCharacterLengthWhenNeed
 {
     // 禁止第一个字符输入空格或者换行

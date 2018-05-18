@@ -35,10 +35,15 @@
     [btn addTarget:self action:@selector(touchesBtn) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
     
+   
+
 }
 -(void)touchesBtn
 {
+    
     [self.view endEditing:YES];
+    
+   
 }
 - (void)buildUI
 {

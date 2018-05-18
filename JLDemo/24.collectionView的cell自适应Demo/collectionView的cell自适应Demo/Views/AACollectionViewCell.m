@@ -24,7 +24,7 @@
 
 //    NSLog(@"%@",self.jltextView.typingAttributes);
     
-    //    self.jltextView.text = @"AAewCel这样只能追踪到手拖动情况，其他代码设置滚动无法控制，eg：点击状";
+//        self.jltextView.text = @"AAewCel这样只能追踪到手拖动情况，其他代码设置滚动无法控制，eg：点击状";
     self.jltextView.tintColor = [UIColor redColor];
 
    
@@ -43,8 +43,8 @@
 //    [self.jltextView setMinimumLineHeight:25 lineSpacing:4.f font:[UIFont systemFontOfSize:20] textColor:[UIColor brownColor] ];
 
     NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
-    paragraphStyle.lineSpacing = 40;// 字体的行间距
-    paragraphStyle.minimumLineHeight = 4 ;// 字体的行高
+    paragraphStyle.lineSpacing = 30;// 字体的行间距
+    paragraphStyle.minimumLineHeight = 40 ;// 字体的行高
     NSDictionary *attributes = @{
                                  NSFontAttributeName:[UIFont systemFontOfSize:20],
                                  NSParagraphStyleAttributeName:paragraphStyle,
