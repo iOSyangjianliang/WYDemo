@@ -14,19 +14,19 @@
    b设置最小行数、最大行数,
    c可获取最小行数、最大行数所需高度,
    d可获取当前文本的行高，文本行数;
- 4.a基于UITextView的typingAttributes富文本设置扩展支持:
-   b最小行高、行间距,字体
-   c同时兼容3中对应的自适应高度全部功能
-   d占位文字大小、位置与富文本保持一致、
-   e富文本光标位置偏移进行处理，
-   f父类contentInset限制设置无效;
+ 4.基于UITextView的typingAttributes富文本设置扩展支持:
+   a最小行高、行间距,字体
+   b同时兼容3中对应的自适应高度全部功能
+   c占位文字大小、位置与富文本保持一致、
+   d富文本光标位置偏移进行处理，
+   e父类contentInset限制设置无效;
 
  */
 
 #import <UIKit/UIKit.h>
 
+//截断字符策略
 typedef NS_ENUM(NSInteger,CharacterTruncationPolicy) {
-    //截断字符策略
     CharacterTruncationDefault = 0,
     CharacterTruncationType1  = 1,
 };
@@ -51,7 +51,8 @@ typedef void(^JLTextHeightChangedHandler)(JLTextView *view,CGFloat textHeight);
 @property (nonatomic, assign, readonly) CGFloat minTextHeight;
 //获取自适应高度时的最大行数高度
 @property (nonatomic, assign, readonly) CGFloat maxTextHeight;
-//获取文本的行高
+
+//获取当前文本的行高
 @property (nonatomic, assign, readonly) CGFloat rowHeight;
 //获取当前文本行数
 @property (nonatomic, assign, readonly) NSUInteger curryLines;
@@ -62,14 +63,14 @@ typedef void(^JLTextHeightChangedHandler)(JLTextView *view,CGFloat textHeight);
 - (void)addTextHeightDidChangeHandler:(JLTextHeightChangedHandler)textHeightHandler;
 
 #pragma mark 字符限制
-// default is NSUIntegerMax 最大限制文本长度[0 NSUIntegerMax], 默认为无穷大不限制, 如果被设为0不允许输入
+// default is NSUIntegerMax 最大限制文本长度[0 NSUIntegerMax], 默认为无穷大不限制
 @property (nonatomic, assign) NSUInteger maxLength;
 // default is NO, 第一个字符限制输入空格、换行符
 @property (nonatomic, assign) BOOL firstCharacterDisableSpace;
 //字符将达到设置最大值截断策略
 @property (nonatomic, assign) CharacterTruncationPolicy characterPolicy;
 
-#pragma mark 提供两种简便快捷设置富文本方式，也可使用父类typingAttributes去实现
+#pragma mark 提供两种简便快捷设置富文本方式，更丰富样式可使用父类typingAttributes去实现
 //基于UITextView的typingAttributes富文本设置行高、字体
 - (void)setMinimumLineHeight:(CGFloat)lineHeight font:(UIFont *)font textColor:(UIColor *)color;
 //基于UITextView的typingAttributes富文本设置行高、行间距,字体、
@@ -77,12 +78,13 @@ typedef void(^JLTextHeightChangedHandler)(JLTextView *view,CGFloat textHeight);
 
 @end
 
-#pragma mark UITextView大小计算扩展
+#pragma mark UITextView文本内容实际大小计算扩展
 @interface UITextView (JLSizeCalculate)
 //获取textView文本内容实际排版宽度
 - (CGFloat)jl_getTextViewContentTextWidth;
+
 //获取textView对应文本计算需要的高度(兼容富文本、textContainerInset情况)
 - (CGFloat)jl_getTextHeightInTextView:(NSString *)text;
-
-
+- (CGFloat)jl_getTextViewHeightWithTextHeight:(CGFloat)textHeight;
+- (CGFloat)jl_getTextViewHeightInTextView:(NSString *)text;
 @end

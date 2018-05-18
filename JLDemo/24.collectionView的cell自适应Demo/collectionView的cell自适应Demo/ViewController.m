@@ -34,6 +34,7 @@
     [btn setTitle:@"收起键盘" forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(touchesBtn) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
+    
 }
 -(void)touchesBtn
 {
@@ -42,11 +43,10 @@
 - (void)buildUI
 {
     _flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    _flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
-//        _flowLayout.itemSize = CGSizeMake(100, 300);
+    //        _flowLayout.itemSize = CGSizeMake(100, 300);
     //        _flowLayout.headerReferenceSize = CGSizeMake(self.view.frame.size.width, 50);
     //        _flowLayout.footerReferenceSize = CGSizeMake(self.view.frame.size.width, 50);
-    //    _flowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+    //        _flowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
     
     //自适应cell调整不能使用组头，不然会有组头尾布局问题
     //在iOS8.1-8.2中不能使用estimatedItemSize, bug:http://www.bubuko.com/infodetail-1686310.html
@@ -74,12 +74,12 @@
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return 20;
+    return 1;//20;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return  3;
+    return 1;// 3;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -138,7 +138,7 @@
 -(void)textViewDidEndEditing:(UITextView *)textView
 {
     _textFiledStr = [NSString stringWithFormat:@"%@", textView.text];
-//    NSLog(@"_textFiledStr=%@",_textFiledStr);
+    NSLog(@"_textFiledStr=%@",_textFiledStr);
 }
 -(void)textViewDidChange:(UITextView *)textView
 {

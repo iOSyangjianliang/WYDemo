@@ -21,26 +21,42 @@
 //    NSLog(@"%s——2",__FUNCTION__);
 
    
-//    self.jltextView.text = @"AAewCel这样只能追踪到手拖动情况，其他代码设置滚动无法控制，eg：点击状";
+
+//    NSLog(@"%@",self.jltextView.typingAttributes);
+    
+    //    self.jltextView.text = @"AAewCel这样只能追踪到手拖动情况，其他代码设置滚动无法控制，eg：点击状";
+    self.jltextView.tintColor = [UIColor redColor];
 
    
     self.jltextView.placeholder = @"请在动态高度输入框输入文字";
 //    self.jltextView.placeholderColor = [UIColor grayColor];
     
 //    [self.jltextView setMinimumLineHeight:21 font:[UIFont systemFontOfSize:14] textColor:[UIColor brownColor]];
+    
+    self.jltextView.font = [UIFont systemFontOfSize:13];
+    self.jltextView.textColor = [UIColor brownColor] ;
+//    self.jltextView.backgroundColor = [UIColor redColor] ;
+
+    NSLog(@"j__%@",self.jltextView.font);
+    NSLog(@"j__%f",self.jltextView.rowHeight);
+
 //    [self.jltextView setMinimumLineHeight:25 lineSpacing:4.f font:[UIFont systemFontOfSize:20] textColor:[UIColor brownColor] ];
+
+    NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
+    paragraphStyle.lineSpacing = 40;// 字体的行间距
+    paragraphStyle.minimumLineHeight = 4 ;// 字体的行高
+    NSDictionary *attributes = @{
+                                 NSFontAttributeName:[UIFont systemFontOfSize:20],
+                                 NSParagraphStyleAttributeName:paragraphStyle,
+                                 };
+    self.jltextView.typingAttributes = attributes;
     
-//    NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
-//    paragraphStyle.lineSpacing = 50;// 字体的行间距
-//    paragraphStyle.minimumLineHeight = 30 ;// 字体的行高
-//    NSDictionary *attributes = @{
-//                                 NSFontAttributeName:[UIFont systemFontOfSize:15],
-//                                 NSParagraphStyleAttributeName:paragraphStyle
-//                                 };
-//    self.jltextView.typingAttributes = attributes;
-//
-    
-    self.jltextView.minNumberOfLines  = 2;
+    NSLog(@"j__%@--%f",self.jltextView.font,self.jltextView.font.lineHeight);
+    NSLog(@"j__%f",self.jltextView.rowHeight);
+
+//    self.jltextView.font = [UIFont systemFontOfSize:43];//带测试
+
+    self.jltextView.minNumberOfLines  = 1;
     self.jltextView.maxNumberOfLines  = 4;
     self.jltextView.sizeToFitHight = YES;
 
@@ -61,14 +77,15 @@
 //        }
     }];
     
-    self.jltextView.text = @"AAewCel这样只能追踪到手拖动情况，其他代码设置滚动无法控制，eg：点击状态栏，滚动时调用会导致崩溃ionVie输入框输入文字099991";
+    self.jltextView.text = @"AAewCel";
+    NSLog(@"curryTextHeight=%f",[self.jltextView jl_getTextHeightInTextView:self.jltextView.text]);
 
     
 //    self.jltextView.text = @"AACollectionViewCellAACollectionViewCellAACollectionViewCellAACollectionViewCellAACollectionViewCellAACollectionViewCellAACollectionViewCel这样只能追踪到手拖动情况，其他代码设置滚动无法控制，eg：点击状态栏，滚动时调用会导致崩溃ionViewCellAACollectionViewCellAACollectionViewCellAACollectionViewCellAACollectionViewCellAACollectionViewCellAACollectionVieCellAACollectionViewCellAACollectionViewCellAACollectionViewCellAACollectionViewCellAACollectionViewCellAACollectionViewCellAACollectionVieiewCell输入框输入文字";
     
-    NSLog(@"%f",self.jltextView.minTextHeight);
-    NSLog(@"%f",self.jltextView.maxTextHeight);
-    NSLog(@"%f",self.jltextView.rowHeight);
+    NSLog(@"minTextHeight=%f",self.jltextView.minTextHeight);
+    NSLog(@"maxTextHeight=%f",self.jltextView.maxTextHeight);
+    NSLog(@"rowHeight=%f",self.jltextView.rowHeight);
 
 
 }
