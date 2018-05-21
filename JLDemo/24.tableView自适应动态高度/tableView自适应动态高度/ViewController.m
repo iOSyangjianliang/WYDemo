@@ -32,8 +32,10 @@ static NSString *AATableViewCell_reuse = @"AATableViewCell";
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0.1)];
     self.tableView.separatorInset = UIEdgeInsetsMake(0, 15, 0, 0);
     self.tableView.separatorColor = [UIColor redColor];
+   
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.tableView.estimatedRowHeight = 100;
+    
     self.tableView.backgroundColor = [UIColor blueColor];
     self.tableView.bounces = NO;
     [self.view addSubview:self.tableView];
