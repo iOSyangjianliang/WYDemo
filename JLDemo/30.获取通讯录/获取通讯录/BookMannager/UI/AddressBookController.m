@@ -10,16 +10,15 @@
 #import "AddressBookTableCell.h"
 #import "AddressBookManager.h"
 
-#import "UIView+Log.h"
-
 @interface AddressBookController ()<UITableViewDelegate,UITableViewDataSource>
 @property (strong, nonatomic) UITableView *tableView;
+@property(nonatomic,strong)UILabel *indexLabel;
 
 @property(nonatomic,strong)NSArray *addBooksArray;
 @property(nonatomic,strong)NSArray *indexTitleArray;
 
-@property(nonatomic,assign)NSInteger lastInteger;
-@property(nonatomic,assign)NSInteger lastMinY;
+
+@property(nonatomic,strong)NSMutableArray *indexTitleFrameArrayM;
 
 @end
 static NSString *cellReuse_AddressBookTableCell = @"AddressBookTableCell";
@@ -48,7 +47,7 @@ static NSString *cellReuse_AddressBookTableCell = @"AddressBookTableCell";
 
 -(void)buildUI
 {
-    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height) style:UITableViewStylePlain];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0.1)];
     self.tableView.allowsMultipleSelection = YES;
     self.tableView.rowHeight = 40;
@@ -58,6 +57,14 @@ static NSString *cellReuse_AddressBookTableCell = @"AddressBookTableCell";
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     [self.tableView registerNib:[UINib nibWithNibName:@"AddressBookTableCell" bundle:nil] forCellReuseIdentifier:cellReuse_AddressBookTableCell];
+    
+//    if (@available(iOS 11.0, *)) {
+//        self.tableView.contentInsetAdjustmentBehavior  = UIScrollViewContentInsetAdjustmentNever;
+//    } else {
+//        self.automaticallyAdjustsScrollViewInsets = NO;
+//    }
+    self.indexTitleFrameArrayM = [NSMutableArray array];
+
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -79,6 +86,11 @@ static NSString *cellReuse_AddressBookTableCell = @"AddressBookTableCell";
     header.contentView.backgroundColor=[UIColor colorWithRed:238/255.f green:238/255.f blue:238/255.f alpha:1];
     header.textLabel.font = [UIFont systemFontOfSize:15];
     [header.textLabel setTextColor:[UIColor colorWithRed:47/255.f green:47/255.f blue:47/255.f alpha:1]];
+    
+    if (section ==self.indexTitleFrameArrayM.count) {
+        NSNumber *minY = @(CGRectGetMinY(view.frame));
+        [self.indexTitleFrameArrayM addObject:minY];
+    }
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -96,66 +108,69 @@ static NSString *cellReuse_AddressBookTableCell = @"AddressBookTableCell";
 -(NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
 {
     [tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:index] atScrollPosition:UITableViewScrollPositionTop animated:NO];
-//    [MBProgressHUD zx_showSuccess:title toView:self.view];
-    
-    
-    //eg: CGPoint P2 = [A convertPoint:P1 toView:B];
-    //A:被转坐标系的视图
-    //B:要转到的指定视图
-    //P1:A上的点坐标
-    //P2:转到B上后的点坐标
-    
-    [UIView zhNSLogSubviewsFromView:self.tableView andLevel:0];
-    NSLog(@"\n====");
+    [self showIndexTitleView:title];
     return index;
 }
-
+- (void)showIndexTitleView:(NSString *)text
+{
+    if (self.indexLabel) {
+        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(removeIndexLabel) object:self];
+        self.indexLabel.text = text;
+        [self performSelector:@selector(removeIndexLabel) withObject:nil afterDelay:1.5];
+    }else{
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+        label.layer.cornerRadius = 25.f;
+        label.layer.masksToBounds = YES;
+        label.backgroundColor = [UIColor colorWithRed:47/255.f green:47/255.f blue:47/255.f alpha:0.55];
+        label.textColor = [UIColor colorWithRed:60/255.f green:160/255.f blue:255/255.f alpha:1]; //右侧索引色
+        label.textAlignment = NSTextAlignmentCenter;
+        label.center = self.view.center;
+        label.text = text;
+        [self.indexLabel removeFromSuperview];
+        self.indexLabel = label;
+        [self.view addSubview:self.indexLabel];
+    }
+//    CGPoint point = [self.tableView.panGestureRecognizer locationInView:self.view];
+//    NSLog(@"__%@__%@",text,NSStringFromCGPoint(point));
+}
+- (void)removeIndexLabel
+{
+    [self.indexLabel removeFromSuperview];
+    self.indexLabel = nil;
+}
 - (void)showView
 {
-    NSArray *arr = [self.tableView indexPathsForVisibleRows];
+    NSLog(@"==\n%@",self.indexTitleFrameArrayM);
+    NSLog(@"==%f" ,self.tableView.contentOffset.y);
     
+    CGFloat contentOffsetY  = self.tableView.contentOffset.y;
+    NSInteger section = 0;
+    for (int i=0; i<self.indexTitleFrameArrayM.count-1; ++i) {
+        NSNumber *minY = self.indexTitleFrameArrayM[i];
+        NSNumber *minYY = self.indexTitleFrameArrayM[i+1];
+        if (minY.floatValue <=contentOffsetY && contentOffsetY <= minYY.floatValue) {
+            section = i;
+            break;
+        }
+    }
+    NSArray *arr = [self.tableView indexPathsForVisibleRows];
     for (int i=0; i<arr.count; ++i) {
         NSIndexPath *indexPath = arr[i];
         UITableViewHeaderFooterView *view = [self.tableView headerViewForSection:indexPath.section];
-
-        if (i==0) {
-            CGFloat minY = CGRectGetMinY(view.frame);
-
-            BOOL bo = minY == self.lastMinY && indexPath.section==self.lastInteger;
-
-            NSLog(@"\n===============\n");
-
-            NSLog(@"======%ld",indexPath.section);
-            NSLog(@"%f==%f",minY, self.tableView.contentOffset.y);
-            
-            NSLog(@"\n===============\n");
-
-            self.lastInteger = indexPath.section;
-            self.lastMinY = minY;
-            
-//            if (bo) {
-                view.textLabel.textColor = [UIColor colorWithRed:60/255.f green:160/255.f blue:255/255.f alpha:1]; //右侧索引色
-//            }
+        if (indexPath.section == section) {
+            view.textLabel.textColor = [UIColor colorWithRed:60/255.f green:160/255.f blue:255/255.f alpha:1]; //右侧索引色
         }else{
+            [view.textLabel setTextColor:[UIColor colorWithRed:47/255.f green:47/255.f blue:47/255.f alpha:1]];
 
-//            [view.textLabel setTextColor:[UIColor colorWithRed:47/255.f green:47/255.f blue:47/255.f alpha:1]];
         }
-       
-
     }
-   
-    
-//    CGPoint Point = [view convertPoint:CGPointMake(0, CGRectGetMinY(view.frame)) toView:self.view];
-//    NSLog(@"666==%@",NSStringFromCGPoint(self.tableView.contentOffset));
-//
-//    if (Point.y == CGRectGetMinY(self.tableView.frame)-self.tableView.contentOffset.y) {
-//        view.textLabel.textColor = [UIColor colorWithRed:255/255.f green:84/255.f blue:52/255.f alpha:1];
-//    }
-    
 }
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    [self showView];
+//    [self showView];
+    
+//    CGPoint point = [self.tableView.panGestureRecognizer locationInView:self.view];
+//    NSLog(@"___%@",NSStringFromCGPoint(point));
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 {

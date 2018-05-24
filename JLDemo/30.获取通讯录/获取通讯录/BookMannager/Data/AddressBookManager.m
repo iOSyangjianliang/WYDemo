@@ -202,7 +202,7 @@ static NSString *const authorizationFailureMessage = @"用户拒绝授权，读�
 }
 -(void)sortArrayData
 {
-    //按姓氏首字母排序-不分组联系人数据
+    //按姓氏首字母排序-不分组联系人数据@[model，model]
     for (int i=0; i<_addressBook.count; ++i) {
         for (int j=0; j<_addressBook.count-1; ++j) {
             AddressBookModel *smcModel_j = _addressBook[j];

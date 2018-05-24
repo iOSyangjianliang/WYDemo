@@ -19,7 +19,6 @@
 		2B05EFD820B54E6700781145 /* AddressBookTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B05EFD620B54E6700781145 /* AddressBookTableCell.m */; };
 		2B05EFD920B54E6700781145 /* AddressBookTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B05EFD720B54E6700781145 /* AddressBookTableCell.xib */; };
 		2B05EFDF20B5562A00781145 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B05EFDE20B5562A00781145 /* MainViewController.m */; };
-		2B05EFE220B5584300781145 /* UIView+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B05EFE120B5584200781145 /* UIView+Log.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,8 +43,6 @@
 		2B05EFD720B54E6700781145 /* AddressBookTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressBookTableCell.xib; sourceTree = "<group>"; };
 		2B05EFDD20B5562A00781145 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		2B05EFDE20B5562A00781145 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
-		2B05EFE020B5584200781145 /* UIView+Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Log.h"; path = "../../15.UIView+Log/UIView+Log/UIView+Log.h"; sourceTree = "<group>"; };
-		2B05EFE120B5584200781145 /* UIView+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Log.m"; path = "../../15.UIView+Log/UIView+Log/UIView+Log.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,8 +80,6 @@
 				2B05EFAB20B507BD00781145 /* AppDelegate.m */,
 				2B05EFDD20B5562A00781145 /* MainViewController.h */,
 				2B05EFDE20B5562A00781145 /* MainViewController.m */,
-				2B05EFE020B5584200781145 /* UIView+Log.h */,
-				2B05EFE120B5584200781145 /* UIView+Log.m */,
 				2B05EFB020B507BD00781145 /* Main.storyboard */,
 				2B05EFB320B507BE00781145 /* Assets.xcassets */,
 				2B05EFB520B507BE00781145 /* LaunchScreen.storyboard */,
@@ -205,7 +200,6 @@
 				2B05EFBA20B507BE00781145 /* main.m in Sources */,
 				2B05EFC920B50B0200781145 /* AddressBookModel.m in Sources */,
 				2B05EFD220B5125B00781145 /* AddressBookPinYin.m in Sources */,
-				2B05EFE220B5584300781145 /* UIView+Log.m in Sources */,
 				2B05EFAC20B507BD00781145 /* AppDelegate.m in Sources */,
 				2B05EFC320B50AB700781145 /* AddressBookManager.m in Sources */,
 			);
