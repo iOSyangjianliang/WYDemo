@@ -52,7 +52,7 @@ typedef void(^JLTextHeightChangedHandler)(JLTextView *view,CGFloat textHeight);
 //获取自适应高度时的最大行数高度
 @property (nonatomic, assign, readonly) CGFloat maxTextHeight;
 
-//获取当前文本的行高
+//获取当前文本的行高(不含行间距)
 @property (nonatomic, assign, readonly) CGFloat rowHeight;
 //获取当前文本行数
 @property (nonatomic, assign, readonly) NSUInteger curryLines;

@@ -54,10 +54,10 @@
     NSLog(@"j__%@--%f",self.jltextView.font,self.jltextView.font.lineHeight);
     NSLog(@"j__%f",self.jltextView.rowHeight);
 
-//    self.jltextView.font = [UIFont systemFontOfSize:43];//带测试
+//    self.jltextView.font = [UIFont systemFontOfSize:43];//待测试(不能设置typingAttributes又去设置font，不然换第二行有点小问题)
 
     self.jltextView.minNumberOfLines  = 1;
-    self.jltextView.maxNumberOfLines  = 4;
+    self.jltextView.maxNumberOfLines  = 3;
     self.jltextView.sizeToFitHight = YES;
 
     self.textH = self.jltextView.minTextHeight;

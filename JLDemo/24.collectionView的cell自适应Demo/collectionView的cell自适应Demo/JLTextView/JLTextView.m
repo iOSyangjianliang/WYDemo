@@ -9,8 +9,9 @@
 #import "JLTextView.h"
 
 @interface JLTextView ()<UITextInput>
-// UITextView作为placeholderView，使placeholderView等于UITextView的大小，字体重叠显示，方便快捷，解决占位符问题.
+//使用等大JLTextView解决占位符问题.方便设置富文本、typingAttributes等时的字体重叠显示
 @property (nonatomic, weak) UITextView *placeholderView;
+@property (nonatomic, assign) BOOL scrollEnabledLock;//当使用sizeToFitHight=YES时scrollEnabled外部设置无效
 
 @property (nonatomic, assign) CGFloat lastTextHeight;
 @property (nonatomic, assign) CGFloat curryLineSpacing;
@@ -46,6 +47,7 @@ static CGFloat const defaultTextHeight = -1.f;
     _lastTextHeight = defaultTextHeight;
     _placeholderColor = [UIColor colorWithRed:194.f/255.0f green:194.f/255.0f blue:194.f/255.0f alpha:1.0];
     _firstCharacterDisableSpace = NO;
+    _scrollEnabledLock = NO;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textDidChange:) name:UITextViewTextDidChangeNotification object:nil];
 }
 #pragma mark - placeholderView
@@ -81,7 +83,12 @@ static CGFloat const defaultTextHeight = -1.f;
 {
     _sizeToFitHight = sizeToFitHight;
     if (_sizeToFitHight) {
+        self.scrollEnabledLock = NO;
         self.scrollEnabled = NO;
+        self.scrollEnabledLock = YES;
+    }else{
+        self.scrollEnabledLock = NO;
+        self.scrollEnabled = YES;
     }
     if (!self.text||[self.text isEqualToString:@""]) {
         [self sizeToFitMinLinesHightWhenNoText];
@@ -103,21 +110,6 @@ static CGFloat const defaultTextHeight = -1.f;
     CGFloat heightMAX = self.rowHeight* self.maxNumberOfLines+self.curryLineSpacing* (self.maxNumberOfLines-1) + self.textContainerInset.top + self.textContainerInset.bottom+self.contentInset.top+self.contentInset.bottom;
     return ceilf(heightMAX);
 }
-//-(NSUInteger)curryLines
-//{
-//    if (self.text&& ![self.text isEqualToString:@""]) {
-//        CGFloat textHeight = [self jl_getTextHeightInTextView:self.text];
-//        CGFloat lineSpacingSingleRow = 0.f;
-//        if (textHeight>(_rowHeight+_curryLineSpacing)) { //单行时计算的textHeight会包含行间距
-//            lineSpacingSingleRow = _curryLineSpacing;
-//        }
-//        CGFloat Lines = (textHeight+lineSpacingSingleRow)/(_rowHeight+_curryLineSpacing);
-//        NSLog(@"jl__curryLines_textHeight=%f",textHeight);
-//        NSLog(@"jl__curryLines=%f",Lines);
-//        return ceilf(Lines);
-//    }
-//    return 0;
-//}
 -(void)setMaxLength:(NSUInteger)maxLength
 {
     _maxLength = maxLength;
@@ -145,17 +137,15 @@ static CGFloat const defaultTextHeight = -1.f;
         
 //        CGFloat heightText = [self jl_getTextHeightInTextView:self.text];
         CGFloat heightText  = [self calculateTextHeight];
-        NSLog(@"jl_heightText_self.text = %@",self.text);
-        NSLog(@"jl_heightText = %f",heightText);
         CGFloat height = [self jl_getTextViewHeightWithTextHeight:heightText];
-        if (self.minNumberOfLines==1&& heightText<= (self.rowHeight+self.curryLineSpacing)) { //单行时计算的textHeight会包含行间距
-//            height -= self.curryLineSpacing;
-        }
         
-        if (self.lastTextHeight != height) { // 字符串高度改变时调整frame高度
-            // 当高度大于自身高度时，设置允许滚动，否则不滚动
-            self.scrollEnabled = height > self.frame.size.height?YES:NO;
-            _lastTextHeight = height;
+        if (self.lastTextHeight != height)
+        { // 字符串高度改变时调整frame高度
+            self.lastTextHeight = height;
+
+            self.scrollEnabledLock = NO;
+            self.scrollEnabled = NO;
+            self.scrollEnabledLock = YES;
             
             if (height<=self.minTextHeight)
             {
@@ -166,6 +156,11 @@ static CGFloat const defaultTextHeight = -1.f;
             }
             else if (height>=self.maxTextHeight)
             {
+                //当高度大于自身高度时，设置允许滚动，否则不滚动
+                self.scrollEnabledLock = NO;
+                self.scrollEnabled = YES;
+                self.scrollEnabledLock = YES;
+                
                 CGRect frame = self.frame;
                 frame.size.height = self.maxTextHeight;
                 self.frame = frame;
@@ -179,30 +174,28 @@ static CGFloat const defaultTextHeight = -1.f;
         }
     }
 }
+//为了解决bug:设置行间距系统计算第一行会加上行间距，并不是我想要结果暂时这样处理
 - (CGFloat )calculateTextHeight
 {
     
     NSMutableDictionary *dictM = [NSMutableDictionary dictionaryWithDictionary:self.typingAttributes];
     NSMutableParagraphStyle *attName =  [[dictM objectForKey:NSParagraphStyleAttributeName] mutableCopy];
-    attName.lineSpacing = 0.f;//为了解决bug:设置行间距系统计算第一行会加上行间距，第二行时不加，第三行后又加
+    attName.lineSpacing = 0.f;
     [dictM setObject:attName forKey:NSParagraphStyleAttributeName];
-    NSLog(@"%@",self.typingAttributes);
     
     CGFloat  width = [self jl_getTextViewContentTextWidth];
     CGFloat textHeight =  [self.text boundingRectWithSize:CGSizeMake(width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:dictM context:nil].size.height;
     
-    NSLog(@"calcul_textHeight=%f",textHeight);
+    NSLog(@"calcul_textHeight_NoLineSpacing=%f",textHeight);
     
     CGFloat Lines = textHeight/self.rowHeight;
     _curryLines = Lines;
     NSLog(@"calcul_curryLines%f",Lines);
     
     textHeight = textHeight+self.curryLineSpacing*(Lines-1);
-    NSLog(@"calcul_FF_textHeight%f",textHeight);
+    NSLog(@"calcul_textHeight%f",textHeight);
 
     return textHeight;
-    
-    
 }
 //限制字符输入
 -(void)limitCharacterLengthWhenNeed
@@ -302,6 +295,12 @@ static CGFloat const defaultTextHeight = -1.f;
     _textHeightHandler = [textHeightHandler copy];
 }
 #pragma mark - 重写父类方法
+-(void)setScrollEnabled:(BOOL)scrollEnabled
+{
+    if (!self.scrollEnabledLock) {
+        [super setScrollEnabled:scrollEnabled];
+    }
+}
 - (void)setFont:(UIFont *)font
 {
     [super setFont:font];
