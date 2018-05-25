@@ -43,7 +43,7 @@
 //    [self.jltextView setMinimumLineHeight:25 lineSpacing:4.f font:[UIFont systemFontOfSize:20] textColor:[UIColor brownColor] ];
 
     NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
-    paragraphStyle.lineSpacing = 30;// 字体的行间距
+    paragraphStyle.lineSpacing = 0;// 字体的行间距
     paragraphStyle.minimumLineHeight = 40 ;// 字体的行高
     NSDictionary *attributes = @{
                                  NSFontAttributeName:[UIFont systemFontOfSize:20],

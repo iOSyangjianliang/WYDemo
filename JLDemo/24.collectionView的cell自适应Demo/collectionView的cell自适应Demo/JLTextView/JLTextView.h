@@ -41,7 +41,7 @@ typedef void(^JLTextHeightChangedHandler)(JLTextView *view,CGFloat textHeight);
 @property (nonatomic, strong) UIColor *placeholderColor;
 
 #pragma mark 自适应高度
-//default is NO,自适应高度，默认为minNumberOfLines高度。设置YES初始化后Frame的高度将由minNumberOfLines决定
+//自适应高度 default is NO。设置YES后Frame高度设置无效，高度将由minNumberOfLines决定
 @property (nonatomic, assign) BOOL sizeToFitHight;
 //default is 1, 最小行数[0 NSUIntegerMax],建议在sizeToFitHight设置之前设置
 @property (nonatomic, assign) NSUInteger minNumberOfLines;
@@ -82,7 +82,6 @@ typedef void(^JLTextHeightChangedHandler)(JLTextView *view,CGFloat textHeight);
 @interface UITextView (JLSizeCalculate)
 //获取textView文本内容实际排版宽度
 - (CGFloat)jl_getTextViewContentTextWidth;
-
 //获取textView对应文本计算需要的高度(兼容富文本、textContainerInset情况)
 - (CGFloat)jl_getTextHeightInTextView:(NSString *)text;
 - (CGFloat)jl_getTextViewHeightWithTextHeight:(CGFloat)textHeight;
