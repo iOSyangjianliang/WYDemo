@@ -38,7 +38,7 @@
 //    _inputView.textContainerInset = UIEdgeInsetsMake(8, 8, 8, 8);
 
 
-    _inputView.maxLength = 100;
+    _inputView.maxLength = 10;
     
     // 设置文本框最大行数
     _inputView.minNumberOfLines = 1;
@@ -58,6 +58,20 @@
     }];
     
 //    [_inputView setMinimumLineHeight:31 lineSpacing:0 font:[UIFont systemFontOfSize:14] textColor:[UIColor redColor]];
+    
+//    [_inputView setMinimumLineHeight:0 lineSpacing:8 font:[UIFont systemFontOfSize:14] textColor:[UIColor redColor]];
+    
+    NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
+    paragraphStyle.lineSpacing = 20;// 字体的行间距
+    paragraphStyle.minimumLineHeight = 40 ;// 字体的行高
+    NSDictionary *attributes = @{
+                                 NSFontAttributeName:[UIFont systemFontOfSize:14] ,
+                                 NSForegroundColorAttributeName:[UIColor redColor],
+                                 NSParagraphStyleAttributeName:paragraphStyle,
+                                 NSBaselineOffsetAttributeName:@(10)
+                                 };
+    _inputView.typingAttributes = attributes;
+    
     
     //内容边距
 //    NSLog(@"%@",NSStringFromUIEdgeInsets(_inputView.textContainerInset));

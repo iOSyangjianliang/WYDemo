@@ -101,7 +101,6 @@ static CGFloat const defaultTextHeight = -1.f;
     if (self.minNumberOfLines == 0) {
         return 0.0;
     }
-    
     CGFloat heightMIN = self.rowHeight * self.minNumberOfLines+self.curryLineSpacing* (self.minNumberOfLines-1) + self.textContainerInset.top + self.textContainerInset.bottom +self.contentInset.top+self.contentInset.bottom;
     return ceilf(heightMIN);
 }
@@ -251,6 +250,7 @@ static CGFloat const defaultTextHeight = -1.f;
             if (!self.markedTextRange && self.text.length > _maxLength) {
                 self.text = [self.text substringToIndex:_maxLength]; // 截取最大限制字符数.
                 [self.undoManager removeAllActions]; // 达到最大字符数后清空所有undoaction, 以免undo 操作造成crash.
+                //复制过来一个长度很长的字符串，粘贴过后，摇晃手机，点击撤销，这个时候就会崩溃
             }
         }
         
@@ -389,6 +389,39 @@ static CGFloat const defaultTextHeight = -1.f;
 //{//not supported setup because of system bugs
 //    [super setContentInset:UIEdgeInsetsZero];
 //}
+//-(BOOL)canPerformAction:(SEL)action withSender:(id)sender {
+//    NSLog(@"%@",NSStringFromSelector(action));
+//    if (action == @selector(copyAction:)) {
+//        return YES;
+//    }
+//    if (action == @selector(deleteAction:)) {
+//        return YES;
+//    }
+//    return YES;
+//}
+
+//- (void)paste:(id)sender {
+//    UIPasteboard *pboard = [UIPasteboard generalPasteboard];
+//
+////    UITextRange *selectedRange = [self markedTextRange];
+//
+//    NSRange range = self.selectedRange;
+//    if (self.text.length+ pboard.string.length>self.maxLength && range.length==0) {
+//        NSInteger subInt = self.maxLength-self.text.length;
+//        NSString *pboardStr = [pboard.string substringToIndex:subInt];
+//        NSMutableString *TextM = [NSMutableString stringWithFormat:@"%@",self.text];
+//        [TextM insertString:pboardStr atIndex:range.location];
+//        self.text = TextM;
+//    }else{
+//        [super paste:sender];
+//    }
+//
+//
+////    NSString* str = [NSString stringWithFormat:@"%@\n%@",self.chineseLabel.text,self.englishLabel.text];
+////    [pboard setString:str];
+//
+////    NSLog(@"%@",pboard.string);
+//}
 -(void)layoutSubviews
 {
     NSLog(@"JLTextView layoutSubviews");
@@ -411,6 +444,8 @@ static CGFloat const defaultTextHeight = -1.f;
     if (attName) {
         originalRect.origin.y = originalRect.origin.y+(_rowHeight-self.font.lineHeight);
     }
+    NSNumber *baselineOffset = [self.typingAttributes objectForKey: NSBaselineOffsetAttributeName];
+    originalRect.origin.y-= baselineOffset.floatValue;
     originalRect.size.height = self.font.lineHeight;
     return originalRect;
 }
