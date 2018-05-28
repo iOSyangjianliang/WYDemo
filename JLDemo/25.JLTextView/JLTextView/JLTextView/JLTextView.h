@@ -26,10 +26,10 @@
 #import <UIKit/UIKit.h>
 
 //截断字符策略
-typedef NS_ENUM(NSInteger,CharacterTruncationPolicy) {
-    CharacterTruncationDefault = 0,
-    CharacterTruncationType1  = 1,
-};
+//typedef NS_ENUM(NSInteger,CharacterTruncationPolicy) {
+//    CharacterTruncationDefault = 0,
+//    CharacterTruncationType1  = 1,
+//};
 @class JLTextView;
 typedef void(^JLTextChangedHandler)(JLTextView *view,NSUInteger curryLength);
 typedef void(^JLTextHeightChangedHandler)(JLTextView *view,CGFloat textHeight);
@@ -65,10 +65,6 @@ typedef void(^JLTextHeightChangedHandler)(JLTextView *view,CGFloat textHeight);
 #pragma mark 字符限制
 // default is NSUIntegerMax 最大限制文本长度[0 NSUIntegerMax], 默认为无穷大不限制
 @property (nonatomic, assign) NSUInteger maxLength;
-// default is NO, 第一个字符限制输入空格、换行符
-@property (nonatomic, assign) BOOL firstCharacterDisableSpace;
-//字符将达到设置最大值截断策略
-@property (nonatomic, assign) CharacterTruncationPolicy characterPolicy;
 
 #pragma mark 提供两种简便快捷设置富文本方式，更丰富样式可使用父类typingAttributes去实现
 //基于UITextView的typingAttributes富文本设置行高、字体
@@ -80,6 +76,9 @@ typedef void(^JLTextHeightChangedHandler)(JLTextView *view,CGFloat textHeight);
 
 #pragma mark UITextView文本内容实际大小计算扩展
 @interface UITextView (JLSizeCalculate)
+//限制textView当前字数
+- (void)jl_limitTextViewMaxLengthWhenDidChange:(NSUInteger)maxLength;
+
 //获取textView文本内容实际排版宽度
 - (CGFloat)jl_getTextViewContentTextWidth;
 //获取textView对应文本计算需要的高度(兼容富文本、textContainerInset情况)

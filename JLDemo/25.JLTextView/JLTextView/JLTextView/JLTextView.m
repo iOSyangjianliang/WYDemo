@@ -43,10 +43,8 @@ static CGFloat const defaultTextHeight = -1.f;
     _maxNumberOfLines = NSUIntegerMax;
     _maxLength = NSUIntegerMax;
     _sizeToFitHight = NO;
-    _characterPolicy = CharacterTruncationDefault;
     _lastTextHeight = defaultTextHeight;
     _placeholderColor = [UIColor colorWithRed:194.f/255.0f green:194.f/255.0f blue:194.f/255.0f alpha:1.0];
-    _firstCharacterDisableSpace = NO;
     _scrollEnabledLock = NO;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textDidChange:) name:UITextViewTextDidChangeNotification object:nil];
 }
@@ -151,6 +149,10 @@ static CGFloat const defaultTextHeight = -1.f;
 
             if (height<=self.minTextHeight)
             {
+                super.textContainerInset = UIEdgeInsetsMake(8, 0, 8, 0);
+                _placeholderView.textContainerInset = super.textContainerInset;
+                self.contentInset = UIEdgeInsetsZero;
+                
                 CGRect frame = self.frame;
                 frame.size.height = self.minTextHeight;
                 self.frame = frame;
@@ -158,42 +160,34 @@ static CGFloat const defaultTextHeight = -1.f;
             }
             else if (height>=self.maxTextHeight)
             {
+                super.textContainerInset = UIEdgeInsetsMake(0, 0, 0, 0);
+                _placeholderView.textContainerInset = super.textContainerInset;
+                self.contentInset = UIEdgeInsetsMake(0, 0, 5, 0);
+                [self jl_setContentOffsetToBottom];
+
                 //当高度大于自身高度时允许滚动
                 self.scrollEnabledLock = NO;
                 self.scrollEnabled = YES;
                 self.scrollEnabledLock = YES;
 
-                CGFloat H = self.maxTextHeight;//-self.textContainerInset.top;
+                CGFloat H = self.maxTextHeight;
                 CGRect frame = self.frame;
                 frame.size.height = H;
                 self.frame = frame;
-
-//                [self jl_setContentOffsetToBottom];
-//                if (self.curryLines == 1) {
-//                    [self setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
-//
-//                }else{
-//                    [self setContentInset:UIEdgeInsetsMake(2, 0, 4, 0)];
-//
-//                }
+              
                 !_textHeightHandler ?: _textHeightHandler(self,H);
            
             }else{
+                super.textContainerInset = UIEdgeInsetsMake(3, 0, 5, 0);
+                _placeholderView.textContainerInset = super.textContainerInset;
+                self.contentInset = UIEdgeInsetsZero;
+                [self jl_setContentOffsetToBottom];
                 
-                CGFloat H = height ;//-self.textContainerInset.top;
+                CGFloat H = height;
                 CGRect frame = self.frame;
                 frame.size.height = H;
                 self.frame = frame;
-
-//                if (self.curryLines == 1) {
-//                    [self setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
-//                }else{
-//                    [self setContentInset:UIEdgeInsetsMake(4, 0, 0, 0)];
-//                }
-//                super.textContainerInset = UIEdgeInsetsMake(8, 0, 8, 0);
-
                     
-//                [self jl_setContentOffsetToBottom];
                 !_textHeightHandler ?: _textHeightHandler(self,H);
 
             }
@@ -202,11 +196,11 @@ static CGFloat const defaultTextHeight = -1.f;
 }
 - (void)jl_setContentOffsetToBottom
 {
-    CGFloat offset = self.contentSize.height-self.frame.size.height-self.textContainerInset.top-self.textContainerInset.bottom;
-        if (offset>0)
-    {
-        [self setContentOffset:CGPointMake(0, offset) animated:YES];
-    }
+//    CGFloat offset = self.contentSize.height-self.frame.size.height-self.textContainerInset.top-self.textContainerInset.bottom;
+//    if (offset>0)
+//    {
+//        [self setContentOffset:CGPointMake(0, offset) animated:YES];
+//    }
 }
 //为了解决bug:设置行间距系统计算第一行会加上行间距，这不是我想要的结果
 - (CGFloat )calculateTextHeight
@@ -219,74 +213,18 @@ static CGFloat const defaultTextHeight = -1.f;
     CGFloat  width = [self jl_getTextViewContentTextWidth];
     CGFloat textHeight =  [self.text boundingRectWithSize:CGSizeMake(width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:dictM context:nil].size.height;
     
-    NSLog(@"calcul_textHeight_NoLineSpacing=%f",textHeight);
-    
     CGFloat Lines = textHeight/self.rowHeight;
     _curryLines = Lines;
     NSLog(@"calcul_curryLines%f",Lines);
     
     textHeight = textHeight+self.curryLineSpacing*(Lines-1);
     NSLog(@"calcul_textHeight%f",textHeight);
-
     return textHeight;
 }
 //限制字符输入
 -(void)limitCharacterLengthWhenNeed
 {
-    // 禁止第一个字符输入空格或者换行
-    if (self.firstCharacterDisableSpace) {
-        if (self.text.length == 1) {
-            if ([self.text isEqualToString:@" "] || [self.text isEqualToString:@"\n"]) {
-                self.text = @"";
-            }
-        }
-    }
-    
-    if (self.characterPolicy == CharacterTruncationType1)
-    {
-        // 只有当maxLength字段的值不为无穷大整型时才计算限制字符数.
-        if (_maxLength != NSUIntegerMax && self.text.length > 0) {
-            //需要判断markedTextRange是不是为Nil，如果为Nil的话就说明你现在没有未选中的字符，可以计算文字长度。否则此时计算出来的字符长度可能不正确。
-            if (!self.markedTextRange && self.text.length > _maxLength) {
-                self.text = [self.text substringToIndex:_maxLength]; // 截取最大限制字符数.
-                [self.undoManager removeAllActions]; // 达到最大字符数后清空所有undoaction, 以免undo 操作造成crash.
-                //复制过来一个长度很长的字符串，粘贴过后，摇晃手机，点击撤销，这个时候就会崩溃
-            }
-        }
-        
-    }
-    else
-    {
-        NSString *lang = [[self.nextResponder textInputMode] primaryLanguage]; // 键盘输入模式
-        // 简体中文输入，包括简体拼音，健体五笔，简体手写
-        if ([lang isEqualToString:@"zh-Hans"])
-        {
-            UITextRange *selectedRange = [self markedTextRange];
-            //获取高亮部分
-            UITextPosition *position = [self positionFromPosition:selectedRange.start offset:0];
-            // 没有高亮选择的字，则对已输入的文字进行字数统计和限制
-            if (!position)
-            {
-                if (self.text.length > self.maxLength) {
-                    self.text = [self.text substringToIndex:self.maxLength];
-                }
-            }
-            // 有高亮选择的字符串，则暂不对文字进行统计和限制
-            else
-            {
-    
-            }
-        }
-        // 中文输入法以外的直接对其统计限制即可，不考虑其他语种情况
-        else
-        {
-            if (self.text.length > self.maxLength)
-            {
-                self.text = [ self.text substringToIndex:self.maxLength];
-            }
-        }
-    }
-   
+    [self jl_limitTextViewMaxLengthWhenDidChange:self.maxLength];
     // 回调文本改变的Block.
     !_textHandler ?: _textHandler(self,self.text.length);
 }
@@ -385,43 +323,6 @@ static CGFloat const defaultTextHeight = -1.f;
     _lastTextHeight = defaultTextHeight;
     [self sizeToFitHightWhenNeed];
 }
-//-(void)setContentInset:(UIEdgeInsets)contentInset
-//{//not supported setup because of system bugs
-//    [super setContentInset:UIEdgeInsetsZero];
-//}
-//-(BOOL)canPerformAction:(SEL)action withSender:(id)sender {
-//    NSLog(@"%@",NSStringFromSelector(action));
-//    if (action == @selector(copyAction:)) {
-//        return YES;
-//    }
-//    if (action == @selector(deleteAction:)) {
-//        return YES;
-//    }
-//    return YES;
-//}
-
-//- (void)paste:(id)sender {
-//    UIPasteboard *pboard = [UIPasteboard generalPasteboard];
-//
-////    UITextRange *selectedRange = [self markedTextRange];
-//
-//    NSRange range = self.selectedRange;
-//    if (self.text.length+ pboard.string.length>self.maxLength && range.length==0) {
-//        NSInteger subInt = self.maxLength-self.text.length;
-//        NSString *pboardStr = [pboard.string substringToIndex:subInt];
-//        NSMutableString *TextM = [NSMutableString stringWithFormat:@"%@",self.text];
-//        [TextM insertString:pboardStr atIndex:range.location];
-//        self.text = TextM;
-//    }else{
-//        [super paste:sender];
-//    }
-//
-//
-////    NSString* str = [NSString stringWithFormat:@"%@\n%@",self.chineseLabel.text,self.englishLabel.text];
-////    [pboard setString:str];
-//
-////    NSLog(@"%@",pboard.string);
-//}
 -(void)layoutSubviews
 {
     NSLog(@"JLTextView layoutSubviews");
@@ -445,7 +346,9 @@ static CGFloat const defaultTextHeight = -1.f;
         originalRect.origin.y = originalRect.origin.y+(_rowHeight-self.font.lineHeight);
     }
     NSNumber *baselineOffset = [self.typingAttributes objectForKey: NSBaselineOffsetAttributeName];
-    originalRect.origin.y-= baselineOffset.floatValue;
+    if (baselineOffset) {
+        originalRect.origin.y-= baselineOffset.floatValue;
+    }
     originalRect.size.height = self.font.lineHeight;
     return originalRect;
 }
@@ -476,6 +379,40 @@ static CGFloat const defaultTextHeight = -1.f;
 @end
 
 @implementation UITextView (JLSizeCalculate)
+- (void)jl_limitTextViewMaxLengthWhenDidChange:(NSUInteger)maxLength
+{
+    NSString *lang = [[self.nextResponder textInputMode] primaryLanguage]; // 键盘输入模式
+    // 简体中文输入，包括简体拼音，健体五笔，简体手写
+    if ([lang isEqualToString:@"zh-Hans"])
+    {
+        UITextRange *selectedRange = [self markedTextRange];
+        //获取高亮部分
+        UITextPosition *position = [self positionFromPosition:selectedRange.start offset:0];
+        // 没有高亮选择的字，则对已输入的文字进行字数统计和限制
+        if (!position)
+        {
+            if (self.text.length > maxLength) {
+                self.text = [self.text substringToIndex:maxLength]; // 截取最大限制字符数.
+                [self.undoManager removeAllActions]; // 达到最大字符数后清空所有undoaction, 以免undo操作(复制过来一个长度很长的字符串，粘贴过后，摇晃手机，点击撤销)造成crash. 注:在粘贴超出长度撤销操作触发字符串越界所致，若自定义实现超出字符串截断再粘贴，会自动丢失摇晃手机撤销功能
+            }
+        }
+        // 有高亮选择的字符串，则暂不对文字进行统计和限制
+        else
+        {
+            
+        }
+    }
+    // 中文输入法以外的直接对其统计限制即可，不考虑其他语种情况
+    else
+    {
+        if (self.text.length > maxLength)
+        {
+            self.text = [ self.text substringToIndex:maxLength];
+            [self.undoManager removeAllActions];
+        }
+    }
+    
+}
 - (CGFloat)jl_getTextViewContentTextWidth
 {
     CGFloat contentWidth = CGRectGetWidth(self.frame);

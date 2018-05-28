@@ -38,11 +38,11 @@
 //    _inputView.textContainerInset = UIEdgeInsetsMake(8, 8, 8, 8);
 
 
-    _inputView.maxLength = 10;
+    _inputView.maxLength = 100;
     
     // 设置文本框最大行数
     _inputView.minNumberOfLines = 1;
-    _inputView.maxNumberOfLines =  8;
+    _inputView.maxNumberOfLines =  4;
     _inputView.sizeToFitHight = YES;
 
     [self.view addSubview:_inputView];
@@ -61,16 +61,16 @@
     
 //    [_inputView setMinimumLineHeight:0 lineSpacing:8 font:[UIFont systemFontOfSize:14] textColor:[UIColor redColor]];
     
-    NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
-    paragraphStyle.lineSpacing = 20;// 字体的行间距
-    paragraphStyle.minimumLineHeight = 40 ;// 字体的行高
-    NSDictionary *attributes = @{
-                                 NSFontAttributeName:[UIFont systemFontOfSize:14] ,
-                                 NSForegroundColorAttributeName:[UIColor redColor],
-                                 NSParagraphStyleAttributeName:paragraphStyle,
-                                 NSBaselineOffsetAttributeName:@(10)
-                                 };
-    _inputView.typingAttributes = attributes;
+//    NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
+//    paragraphStyle.lineSpacing = 20;// 字体的行间距
+//    paragraphStyle.minimumLineHeight = 40 ;// 字体的行高
+//    NSDictionary *attributes = @{
+//                                 NSFontAttributeName:[UIFont systemFontOfSize:14] ,
+//                                 NSForegroundColorAttributeName:[UIColor redColor],
+//                                 NSParagraphStyleAttributeName:paragraphStyle,
+//                                 NSBaselineOffsetAttributeName:@(10)
+//                                 };
+//    _inputView.typingAttributes = attributes;
     
     
     //内容边距
@@ -83,10 +83,18 @@
 
     _inputView.delegate = self;
 }
+//- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+//{
+//    if (textView.text.length >15) {
+//        return NO;
+//    }
+//    return YES;
+//}
 - (void)textViewDidChange:(UITextView *)textView;
 {
     
 }
+
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     NSLog(@"%d",_inputView.scrollEnabled);
