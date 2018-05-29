@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    _inputView = [[JLTextView alloc]initWithFrame:CGRectMake(55, 100, 200, 55)];
+    _inputView = [[JLTextView alloc]initWithFrame:CGRectMake(55, 100, 160, 55)];
     
     _inputView.layer.borderWidth = 0.5;
     _inputView.layer.cornerRadius = 4.f;
@@ -26,7 +26,8 @@
     _inputView.layer.masksToBounds = YES;
 
     
-    _inputView.font = [UIFont systemFontOfSize:15];
+    _inputView.font = [UIFont systemFontOfSize:16];
+//    _inputView.textColor = [UIColor redColor];
     _inputView.placeholder = @"默认占位文字";
     
     _inputView.backgroundColor = [UIColor whiteColor];
@@ -38,13 +39,14 @@
 //    _inputView.textContainerInset = UIEdgeInsetsMake(8, 8, 8, 8);
 
 
-    _inputView.maxLength = 100;
+//    _inputView.maxLength = 100;
     
     // 设置文本框最大行数
     _inputView.minNumberOfLines = 1;
     _inputView.maxNumberOfLines =  4;
     _inputView.sizeToFitHight = YES;
-
+    _inputView.textInsetAdjustBehavior = JLTextInsetAdjustmentAutomatic;
+    
     [self.view addSubview:_inputView];
     
     [_inputView addTextDidChangeHandler:^(JLTextView *view, NSUInteger length) {
@@ -53,22 +55,21 @@
     
     [_inputView addTextHeightDidChangeHandler:^(JLTextView *view, CGFloat textHeight) {
         NSLog(@"高度改变了==%f",textHeight);
-
+        NSLog(@"%f",view.font.lineHeight);
 
     }];
     
-//    [_inputView setMinimumLineHeight:31 lineSpacing:0 font:[UIFont systemFontOfSize:14] textColor:[UIColor redColor]];
     
-//    [_inputView setMinimumLineHeight:0 lineSpacing:8 font:[UIFont systemFontOfSize:14] textColor:[UIColor redColor]];
+    [_inputView setTypingAttributesWithLineHeight:23 lineSpacing:0 textFont:nil textColor:nil];
     
 //    NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
-//    paragraphStyle.lineSpacing = 20;// 字体的行间距
+//    paragraphStyle.lineSpacing = 0;// 字体的行间距
 //    paragraphStyle.minimumLineHeight = 40 ;// 字体的行高
 //    NSDictionary *attributes = @{
 //                                 NSFontAttributeName:[UIFont systemFontOfSize:14] ,
 //                                 NSForegroundColorAttributeName:[UIColor redColor],
 //                                 NSParagraphStyleAttributeName:paragraphStyle,
-//                                 NSBaselineOffsetAttributeName:@(10)
+//                                 NSBaselineOffsetAttributeName:@(15) //偏移，默认在底部
 //                                 };
 //    _inputView.typingAttributes = attributes;
     
@@ -82,6 +83,14 @@
 
 
     _inputView.delegate = self;
+}
+- (void)jl_setContentOffsetToBottom:(UITextView *)view
+{
+    CGFloat offset = view.contentSize.height-view.frame.size.height-view.textContainerInset.top-view.textContainerInset.bottom;
+    if (offset>0)
+    {
+        [view setContentOffset:CGPointMake(0, offset) animated:YES];
+    }
 }
 //- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 //{
@@ -98,6 +107,8 @@
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     NSLog(@"%d",_inputView.scrollEnabled);
+
+    NSLog(@"%f",_inputView.frame.size.height);
 
 //    _inputView.minNumberOfLines = 3;
 
