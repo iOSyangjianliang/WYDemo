@@ -47,7 +47,7 @@ static CGFloat const defaultTextHeight = -1.f;
     _lastTextHeight = defaultTextHeight;
     _placeholderColor = [UIColor colorWithRed:194.f/255.0f green:194.f/255.0f blue:194.f/255.0f alpha:1.0];
     _scrollEnabledLock = NO;
-    _textInsetAdjustBehavior = JLTextInsetAdjustmentNever;
+    _textInsetAdjustBehavior = JLTextInsetAdjustmentNormal;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textDidChange:) name:UITextViewTextDidChangeNotification object:nil];
 }
 #pragma mark - placeholderView
@@ -206,9 +206,11 @@ static CGFloat const defaultTextHeight = -1.f;
 - (CGFloat )calculateTextHeight
 {
     NSMutableDictionary *dictM = [NSMutableDictionary dictionaryWithDictionary:self.typingAttributes];
-    NSMutableParagraphStyle *attName =  [[dictM objectForKey:NSParagraphStyleAttributeName] mutableCopy];
-    attName.lineSpacing = 0.f;
-    [dictM setObject:attName forKey:NSParagraphStyleAttributeName];
+    NSMutableParagraphStyle *attName =  [dictM objectForKey:NSParagraphStyleAttributeName];
+    if (attName) {
+        attName.lineSpacing = 0.f;
+        [dictM setObject:attName forKey:NSParagraphStyleAttributeName];
+    }
     
     CGFloat  width = [self jl_getTextViewContentTextWidth];
     CGFloat textHeight =  [self.text boundingRectWithSize:CGSizeMake(width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:dictM context:nil].size.height;
@@ -296,7 +298,6 @@ static CGFloat const defaultTextHeight = -1.f;
     _lastTextHeight = defaultTextHeight;
     [self sizeToFitHightWhenNeed];
 }
-//富文本设置
 -(void)setTypingAttributes:(NSDictionary<NSString *,id> *)typingAttributes
 {
     NSMutableDictionary *dictM = [NSMutableDictionary dictionaryWithDictionary:typingAttributes];
@@ -392,7 +393,7 @@ static CGFloat const defaultTextHeight = -1.f;
         {
             if (self.text.length > maxLength) {
                 self.text = [self.text substringToIndex:maxLength]; // 截取最大限制字符数.
-                [self.undoManager removeAllActions]; // 达到最大字符数后清空所有undoaction, 以免undo操作(复制过来一个长度很长的字符串，粘贴过后，摇晃手机，点击撤销)造成crash. 注:在粘贴超出长度撤销操作触发字符串越界所致，若自定义实现超出字符串截断再粘贴，会自动丢失摇晃手机撤销功能
+                [self.undoManager removeAllActions]; // 达到最大字符数后清空所有undoaction, 以免undo操作(复制过来一个长度很长的字符串，粘贴过后，摇晃手机，点击撤销)造成crash. 注:在粘贴超出长度撤销操作触发字符串越界所致，若自定义实现超出字符串截断再粘贴，会自动丢失摇晃手机撤销功能。还是超出长度粘贴取消撤销功能这样较为简便
             }
         }
         // 有高亮选择的字符串，则暂不对文字进行统计和限制

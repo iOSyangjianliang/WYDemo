@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    _inputView = [[JLTextView alloc]initWithFrame:CGRectMake(55, 100, 160, 55)];
+    _inputView = [[JLTextView alloc]initWithFrame:CGRectMake(55, 50, 160, 55)];
     
     _inputView.layer.borderWidth = 0.5;
     _inputView.layer.cornerRadius = 4.f;
@@ -26,13 +26,15 @@
     _inputView.layer.masksToBounds = YES;
 
     
-    _inputView.font = [UIFont systemFontOfSize:16];
+    _inputView.font = [UIFont systemFontOfSize:16]; //19.09375
 //    _inputView.textColor = [UIColor redColor];
     _inputView.placeholder = @"默认占位文字";
     
     _inputView.backgroundColor = [UIColor whiteColor];
 //    _inputView.placeholderColor = [UIColor redColor];
     
+    [_inputView setTypingAttributesWithLineHeight:21 lineSpacing:0 textFont:nil textColor:nil];
+
     //内容边距
     NSLog(@"%@",NSStringFromUIEdgeInsets(_inputView.textContainerInset));//8、0、8、0
 //    _inputView.contentInset = UIEdgeInsetsMake(20, 30, 20, 30);
@@ -42,7 +44,7 @@
 //    _inputView.maxLength = 100;
     
     // 设置文本框最大行数
-    _inputView.minNumberOfLines = 1;
+    _inputView.minNumberOfLines = 2;
     _inputView.maxNumberOfLines =  4;
     _inputView.sizeToFitHight = YES;
     _inputView.textInsetAdjustBehavior = JLTextInsetAdjustmentAutomatic;
@@ -60,7 +62,6 @@
     }];
     
     
-    [_inputView setTypingAttributesWithLineHeight:23 lineSpacing:0 textFont:nil textColor:nil];
     
 //    NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
 //    paragraphStyle.lineSpacing = 0;// 字体的行间距
@@ -84,14 +85,7 @@
 
     _inputView.delegate = self;
 }
-- (void)jl_setContentOffsetToBottom:(UITextView *)view
-{
-    CGFloat offset = view.contentSize.height-view.frame.size.height-view.textContainerInset.top-view.textContainerInset.bottom;
-    if (offset>0)
-    {
-        [view setContentOffset:CGPointMake(0, offset) animated:YES];
-    }
-}
+
 //- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 //{
 //    if (textView.text.length >15) {

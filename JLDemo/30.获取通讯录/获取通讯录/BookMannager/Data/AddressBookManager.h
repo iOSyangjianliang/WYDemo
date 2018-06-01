@@ -16,5 +16,4 @@ typedef void(^ABFailureBlock)(NSString *message);
 @interface AddressBookManager : NSObject
 + (instancetype)shareInstance;
 - (void)requestAuthorizationForAddressBook:(ABSuccessBlock)success failure:(ABFailureBlock)failure;
-
 @end

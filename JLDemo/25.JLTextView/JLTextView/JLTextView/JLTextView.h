@@ -19,14 +19,14 @@
    b同时兼容3中对应的自适应高度全部功能
    c占位文字大小、位置与富文本保持一致、
    d富文本光标位置偏移进行处理，
-   e提供一个快捷设置行高、行间距方法，并自动调节文字垂直居中
+   e提供一个快捷设置行高、行间距方法，并自动调节文字垂直居中该行
  
  */
 
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSInteger,JLTextInsetAdjustmentBehavior) {
-    JLTextInsetAdjustmentNever     = 0,
+    JLTextInsetAdjustmentNormal     = 0,
     //在自适应高度情况下自动调整内容上下间距使当输入超过最大行数时，恰好展示n行，eg：微信聊天输入框
     JLTextInsetAdjustmentAutomatic = 1,
 };
@@ -53,11 +53,11 @@ typedef void(^JLTextHeightChangedHandler)(JLTextView *view,CGFloat textHeight);
 @property (nonatomic, assign, readonly) CGFloat minTextHeight;
 //获取自适应高度时的最大行数高度
 @property (nonatomic, assign, readonly) CGFloat maxTextHeight;
-//自适应高度时内容上下间距调整、default is JLTextInsetAdjustmentNever
+//自适应高度时内容上下间距调整、default is JLTextInsetAdjustmentNormal
 @property (nonatomic, assign) JLTextInsetAdjustmentBehavior textInsetAdjustBehavior;
-//获取当前文本的行高(不含行间距)
+//获取自适应高度时当前文本的行高(不含行间距)
 @property (nonatomic, assign, readonly) CGFloat rowHeight;
-//获取当前文本行数
+//获取自适应高度时当前文本行数
 @property (nonatomic, assign, readonly) NSUInteger curryLines;
 // 自适应高度(sizeToFitHight=YES)文本高度改变时Block回调.
 - (void)addTextHeightDidChangeHandler:(JLTextHeightChangedHandler)textHeightHandler;
@@ -66,7 +66,9 @@ typedef void(^JLTextHeightChangedHandler)(JLTextView *view,CGFloat textHeight);
  字符限制: default is NSUIntegerMax 最大限制文本长度[0 NSUIntegerMax], 默认为无穷大不限制
  */
 @property (nonatomic, assign) NSUInteger maxLength;
-// 字符改变Block回调.
+/**
+ 字符改变Block回调.
+ */
 - (void)addTextDidChangeHandler:(JLTextChangedHandler)textHandler;
 
 /**
