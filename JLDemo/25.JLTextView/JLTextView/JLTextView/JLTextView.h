@@ -23,6 +23,7 @@
  
  */
 
+
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSInteger,JLTextInsetAdjustmentBehavior) {
@@ -36,11 +37,15 @@ NS_ASSUME_NONNULL_BEGIN
 typedef void(^JLTextChangedHandler)(JLTextView *view,NSUInteger curryLength);
 typedef void(^JLTextHeightChangedHandler)(JLTextView *view,CGFloat textHeight);
 
+IB_DESIGNABLE
 @interface JLTextView : UITextView
 //占位文字
-@property (nonatomic, strong, nullable) NSString *placeholder;
+@property (nonatomic, strong, nullable) IBInspectable NSString *placeholder;
 //占位文字颜色
-@property (nonatomic, strong) UIColor *placeholderColor;
+@property (nonatomic, strong) IBInspectable UIColor *placeholderColor;
+
+//super
+@property(null_resettable,nonatomic,copy) IBInspectable NSString *text;
 
 #pragma mark 自适应高度
 //自适应高度 default is NO。设置YES后Frame高度设置无效，高度将由minNumberOfLines决定

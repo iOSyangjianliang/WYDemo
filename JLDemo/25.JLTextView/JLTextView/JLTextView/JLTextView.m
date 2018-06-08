@@ -21,6 +21,8 @@
 @end
 static CGFloat const defaultTextHeight = -1.f;
 @implementation JLTextView
+@dynamic text ;
+
 -(instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super initWithCoder:aDecoder]) {
