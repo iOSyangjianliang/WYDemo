@@ -75,8 +75,8 @@
 //-(void)copy:(id)sender
 {
     UIPasteboard *pboard = [UIPasteboard generalPasteboard];
-    if (![NSString zhIsBlankString:self.text]) {
+//    if (![NSString zhIsBlankString:self.text]) {
         [pboard setString:self.text];
-    }
+//    }
 }
 @end

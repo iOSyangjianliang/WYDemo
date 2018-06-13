@@ -162,6 +162,7 @@
         [self becomeFirstResponder];//偶现不加的话第一次出现又立即消失
     }else{
         [self removeGestureRecognizer:self.longCopyPressGesture];
+        self.longCopyPressGesture = nil;
     }
 }
 -(void)longPressToDo:(UILongPressGestureRecognizer *)gesture

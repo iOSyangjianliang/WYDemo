@@ -72,8 +72,6 @@
 				2B7C29A720C5186F0010CB3A /* AppDelegate.m */,
 				2B7C29BF20C5255E0010CB3A /* JLLabel.h */,
 				2B7C29C020C5255E0010CB3A /* JLLabel.m */,
-				2B7C29BC20C518BB0010CB3A /* UILabel+TextCopy.h */,
-				2B7C29BD20C518BB0010CB3A /* UILabel+TextCopy.m */,
 				2B7C29A920C5186F0010CB3A /* ViewController.h */,
 				2B7C29AA20C5186F0010CB3A /* ViewController.m */,
 				2B7C29AC20C5186F0010CB3A /* Main.storyboard */,
@@ -90,6 +88,8 @@
 			children = (
 				2B7C29C620C63A200010CB3A /* JLCopyLabel.h */,
 				2B7C29C720C63A200010CB3A /* JLCopyLabel.m */,
+				2B7C29BC20C518BB0010CB3A /* UILabel+TextCopy.h */,
+				2B7C29BD20C518BB0010CB3A /* UILabel+TextCopy.m */,
 			);
 			path = JLCopyLabel;
 			sourceTree = "<group>";
