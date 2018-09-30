@@ -19,10 +19,18 @@
 }
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
+    NSArray *arr3 = [UIApplication sharedApplication].windows;
+    NSLog(@"3.%@",arr3);
+    
     UIViewController *VC=  [[UIViewController alloc] init];
     VC.view.backgroundColor = [UIColor purpleColor];
     
-    [self presentViewController:VC animated:YES completion:nil];
+    //不能使用rootViewController去弹出演示(每格控制器只能弹一个控制器)、应该使用当前被弹出的去弹出演示
+    UIViewController *V = [UIApplication sharedApplication].delegate.window.rootViewController;
+    [V presentViewController:VC animated:YES completion:nil];
+    
+    NSArray *arr4 = [UIApplication sharedApplication].windows;
+    NSLog(@"4.%@",arr4);
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

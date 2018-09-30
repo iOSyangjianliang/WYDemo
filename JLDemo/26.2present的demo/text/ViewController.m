@@ -21,6 +21,9 @@
 }
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
+    NSArray *arr = [UIApplication sharedApplication].windows;
+    NSLog(@"1.%@",arr);
+    
     UIStoryboard *SB = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     AAViewController *VC = [SB instantiateViewControllerWithIdentifier:@"AAViewControllerID"];
     [VC setModalPresentationStyle:UIModalPresentationOverCurrentContext];
@@ -31,6 +34,9 @@
 //    UINavigationController *Navi = [UIApplication sharedApplication].delegate.window.rootViewController;
 //    UIViewController *visibleVC = Navi.visibleViewController;
 //    [visibleVC presentViewController:VC animated:NO completion:nil];
+    
+    NSArray *arr2 = [UIApplication sharedApplication].windows;
+    NSLog(@"2.%@",arr2);
 }
 
 - (void)didReceiveMemoryWarning {
