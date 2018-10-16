@@ -7,32 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2B4FB10F217582B200C7BA5C /* GreenLineLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B4FB10E217582B200C7BA5C /* GreenLineLabel.m */; };
-		2BF52A43215DD770008B3FF5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF52A42215DD770008B3FF5 /* AppDelegate.m */; };
-		2BF52A46215DD770008B3FF5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF52A45215DD770008B3FF5 /* ViewController.m */; };
-		2BF52A49215DD770008B3FF5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BF52A47215DD770008B3FF5 /* Main.storyboard */; };
-		2BF52A4B215DD772008B3FF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BF52A4A215DD772008B3FF5 /* Assets.xcassets */; };
-		2BF52A4E215DD772008B3FF5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BF52A4C215DD772008B3FF5 /* LaunchScreen.storyboard */; };
-		2BF52A51215DD772008B3FF5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF52A50215DD772008B3FF5 /* main.m */; };
+		2BF52AAD216EFCB6008B3FF5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF52AAC216EFCB6008B3FF5 /* AppDelegate.m */; };
+		2BF52AB0216EFCB6008B3FF5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF52AAF216EFCB6008B3FF5 /* ViewController.m */; };
+		2BF52AB3216EFCB6008B3FF5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BF52AB1216EFCB6008B3FF5 /* Main.storyboard */; };
+		2BF52AB5216EFCB7008B3FF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2BF52AB4216EFCB7008B3FF5 /* Assets.xcassets */; };
+		2BF52AB8216EFCB7008B3FF5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BF52AB6216EFCB7008B3FF5 /* LaunchScreen.storyboard */; };
+		2BF52ABB216EFCB7008B3FF5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF52ABA216EFCB7008B3FF5 /* main.m */; };
+		2BF52ACB216F3B16008B3FF5 /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF52ACA216F3B16008B3FF5 /* NullSafe.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2B4FB10D217582B200C7BA5C /* GreenLineLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GreenLineLabel.h; sourceTree = "<group>"; };
-		2B4FB10E217582B200C7BA5C /* GreenLineLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GreenLineLabel.m; sourceTree = "<group>"; };
-		2BF52A3E215DD770008B3FF5 /* CALayer动画01.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CALayer动画01.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2BF52A41215DD770008B3FF5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		2BF52A42215DD770008B3FF5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		2BF52A44215DD770008B3FF5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		2BF52A45215DD770008B3FF5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		2BF52A48215DD770008B3FF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		2BF52A4A215DD772008B3FF5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		2BF52A4D215DD772008B3FF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		2BF52A4F215DD772008B3FF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2BF52A50215DD772008B3FF5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2BF52AA8216EFCB6008B3FF5 /* NullSafe使用.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NullSafe使用.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BF52AAB216EFCB6008B3FF5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		2BF52AAC216EFCB6008B3FF5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		2BF52AAE216EFCB6008B3FF5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		2BF52AAF216EFCB6008B3FF5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		2BF52AB2216EFCB6008B3FF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2BF52AB4216EFCB7008B3FF5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2BF52AB7216EFCB7008B3FF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2BF52AB9216EFCB7008B3FF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2BF52ABA216EFCB7008B3FF5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2BF52AC3216EFEF9008B3FF5 /* JLProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JLProtocol.h; sourceTree = "<group>"; };
+		2BF52ACA216F3B16008B3FF5 /* NullSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NullSafe.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		2BF52A3B215DD770008B3FF5 /* Frameworks */ = {
+		2BF52AA5216EFCB6008B3FF5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -42,75 +42,75 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2BF52A35215DD770008B3FF5 = {
+		2BF52A9F216EFCB6008B3FF5 = {
 			isa = PBXGroup;
 			children = (
-				2BF52A40215DD770008B3FF5 /* CALayer动画01 */,
-				2BF52A3F215DD770008B3FF5 /* Products */,
+				2BF52AAA216EFCB6008B3FF5 /* NullSafe使用 */,
+				2BF52AA9216EFCB6008B3FF5 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		2BF52A3F215DD770008B3FF5 /* Products */ = {
+		2BF52AA9216EFCB6008B3FF5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2BF52A3E215DD770008B3FF5 /* CALayer动画01.app */,
+				2BF52AA8216EFCB6008B3FF5 /* NullSafe使用.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2BF52A40215DD770008B3FF5 /* CALayer动画01 */ = {
+		2BF52AAA216EFCB6008B3FF5 /* NullSafe使用 */ = {
 			isa = PBXGroup;
 			children = (
-				2BF52A41215DD770008B3FF5 /* AppDelegate.h */,
-				2BF52A42215DD770008B3FF5 /* AppDelegate.m */,
-				2BF52A44215DD770008B3FF5 /* ViewController.h */,
-				2BF52A45215DD770008B3FF5 /* ViewController.m */,
-				2BF52A47215DD770008B3FF5 /* Main.storyboard */,
-				2BF52A4A215DD772008B3FF5 /* Assets.xcassets */,
-				2BF52A4C215DD772008B3FF5 /* LaunchScreen.storyboard */,
-				2BF52A4F215DD772008B3FF5 /* Info.plist */,
-				2BF52A50215DD772008B3FF5 /* main.m */,
-				2B4FB10D217582B200C7BA5C /* GreenLineLabel.h */,
-				2B4FB10E217582B200C7BA5C /* GreenLineLabel.m */,
+				2BF52ACA216F3B16008B3FF5 /* NullSafe.m */,
+				2BF52AAB216EFCB6008B3FF5 /* AppDelegate.h */,
+				2BF52AAC216EFCB6008B3FF5 /* AppDelegate.m */,
+				2BF52AAE216EFCB6008B3FF5 /* ViewController.h */,
+				2BF52AAF216EFCB6008B3FF5 /* ViewController.m */,
+				2BF52AC3216EFEF9008B3FF5 /* JLProtocol.h */,
+				2BF52AB1216EFCB6008B3FF5 /* Main.storyboard */,
+				2BF52AB4216EFCB7008B3FF5 /* Assets.xcassets */,
+				2BF52AB6216EFCB7008B3FF5 /* LaunchScreen.storyboard */,
+				2BF52AB9216EFCB7008B3FF5 /* Info.plist */,
+				2BF52ABA216EFCB7008B3FF5 /* main.m */,
 			);
-			path = "CALayer动画01";
+			path = "NullSafe使用";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2BF52A3D215DD770008B3FF5 /* CALayer动画01 */ = {
+		2BF52AA7216EFCB6008B3FF5 /* NullSafe使用 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2BF52A54215DD772008B3FF5 /* Build configuration list for PBXNativeTarget "CALayer动画01" */;
+			buildConfigurationList = 2BF52ABE216EFCB7008B3FF5 /* Build configuration list for PBXNativeTarget "NullSafe使用" */;
 			buildPhases = (
-				2BF52A3A215DD770008B3FF5 /* Sources */,
-				2BF52A3B215DD770008B3FF5 /* Frameworks */,
-				2BF52A3C215DD770008B3FF5 /* Resources */,
+				2BF52AA4216EFCB6008B3FF5 /* Sources */,
+				2BF52AA5216EFCB6008B3FF5 /* Frameworks */,
+				2BF52AA6216EFCB6008B3FF5 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "CALayer动画01";
-			productName = "CALayer动画01";
-			productReference = 2BF52A3E215DD770008B3FF5 /* CALayer动画01.app */;
+			name = "NullSafe使用";
+			productName = "NullSafe使用";
+			productReference = 2BF52AA8216EFCB6008B3FF5 /* NullSafe使用.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		2BF52A36215DD770008B3FF5 /* Project object */ = {
+		2BF52AA0216EFCB6008B3FF5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = yangjianliang;
 				TargetAttributes = {
-					2BF52A3D215DD770008B3FF5 = {
+					2BF52AA7216EFCB6008B3FF5 = {
 						CreatedOnToolsVersion = 10.0;
 					};
 				};
 			};
-			buildConfigurationList = 2BF52A39215DD770008B3FF5 /* Build configuration list for PBXProject "CALayer动画01" */;
+			buildConfigurationList = 2BF52AA3216EFCB6008B3FF5 /* Build configuration list for PBXProject "NullSafe使用" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -118,56 +118,56 @@
 				en,
 				Base,
 			);
-			mainGroup = 2BF52A35215DD770008B3FF5;
-			productRefGroup = 2BF52A3F215DD770008B3FF5 /* Products */;
+			mainGroup = 2BF52A9F216EFCB6008B3FF5;
+			productRefGroup = 2BF52AA9216EFCB6008B3FF5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2BF52A3D215DD770008B3FF5 /* CALayer动画01 */,
+				2BF52AA7216EFCB6008B3FF5 /* NullSafe使用 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		2BF52A3C215DD770008B3FF5 /* Resources */ = {
+		2BF52AA6216EFCB6008B3FF5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2BF52A4E215DD772008B3FF5 /* LaunchScreen.storyboard in Resources */,
-				2BF52A4B215DD772008B3FF5 /* Assets.xcassets in Resources */,
-				2BF52A49215DD770008B3FF5 /* Main.storyboard in Resources */,
+				2BF52AB8216EFCB7008B3FF5 /* LaunchScreen.storyboard in Resources */,
+				2BF52AB5216EFCB7008B3FF5 /* Assets.xcassets in Resources */,
+				2BF52AB3216EFCB6008B3FF5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		2BF52A3A215DD770008B3FF5 /* Sources */ = {
+		2BF52AA4216EFCB6008B3FF5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B4FB10F217582B200C7BA5C /* GreenLineLabel.m in Sources */,
-				2BF52A46215DD770008B3FF5 /* ViewController.m in Sources */,
-				2BF52A51215DD772008B3FF5 /* main.m in Sources */,
-				2BF52A43215DD770008B3FF5 /* AppDelegate.m in Sources */,
+				2BF52AB0216EFCB6008B3FF5 /* ViewController.m in Sources */,
+				2BF52ABB216EFCB7008B3FF5 /* main.m in Sources */,
+				2BF52AAD216EFCB6008B3FF5 /* AppDelegate.m in Sources */,
+				2BF52ACB216F3B16008B3FF5 /* NullSafe.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		2BF52A47215DD770008B3FF5 /* Main.storyboard */ = {
+		2BF52AB1216EFCB6008B3FF5 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				2BF52A48215DD770008B3FF5 /* Base */,
+				2BF52AB2216EFCB6008B3FF5 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		2BF52A4C215DD772008B3FF5 /* LaunchScreen.storyboard */ = {
+		2BF52AB6216EFCB7008B3FF5 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				2BF52A4D215DD772008B3FF5 /* Base */,
+				2BF52AB7216EFCB7008B3FF5 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -175,7 +175,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		2BF52A52215DD772008B3FF5 /* Debug */ = {
+		2BF52ABC216EFCB7008B3FF5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -234,7 +234,7 @@
 			};
 			name = Debug;
 		};
-		2BF52A53215DD772008B3FF5 /* Release */ = {
+		2BF52ABD216EFCB7008B3FF5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -287,37 +287,37 @@
 			};
 			name = Release;
 		};
-		2BF52A55215DD772008B3FF5 /* Debug */ = {
+		2BF52ABF216EFCB7008B3FF5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2VZHX58HUJ;
-				INFOPLIST_FILE = "CALayer动画01/Info.plist";
+				INFOPLIST_FILE = "NullSafe使用/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.microants.haishi.CALayer--01";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.microants.haishi.NullSafe--";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		2BF52A56215DD772008B3FF5 /* Release */ = {
+		2BF52AC0216EFCB7008B3FF5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2VZHX58HUJ;
-				INFOPLIST_FILE = "CALayer动画01/Info.plist";
+				INFOPLIST_FILE = "NullSafe使用/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.microants.haishi.CALayer--01";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.microants.haishi.NullSafe--";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -326,25 +326,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2BF52A39215DD770008B3FF5 /* Build configuration list for PBXProject "CALayer动画01" */ = {
+		2BF52AA3216EFCB6008B3FF5 /* Build configuration list for PBXProject "NullSafe使用" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2BF52A52215DD772008B3FF5 /* Debug */,
-				2BF52A53215DD772008B3FF5 /* Release */,
+				2BF52ABC216EFCB7008B3FF5 /* Debug */,
+				2BF52ABD216EFCB7008B3FF5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2BF52A54215DD772008B3FF5 /* Build configuration list for PBXNativeTarget "CALayer动画01" */ = {
+		2BF52ABE216EFCB7008B3FF5 /* Build configuration list for PBXNativeTarget "NullSafe使用" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2BF52A55215DD772008B3FF5 /* Debug */,
-				2BF52A56215DD772008B3FF5 /* Release */,
+				2BF52ABF216EFCB7008B3FF5 /* Debug */,
+				2BF52AC0216EFCB7008B3FF5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 2BF52A36215DD770008B3FF5 /* Project object */;
+	rootObject = 2BF52AA0216EFCB6008B3FF5 /* Project object */;
 }

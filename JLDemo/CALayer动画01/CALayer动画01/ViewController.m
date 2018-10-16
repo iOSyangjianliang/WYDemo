@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "GreenLineLabel.h"
 
 @interface ViewController ()
 @property(nonatomic, strong)UIView *VVV;
@@ -16,25 +17,32 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor blackColor];
 
 
-    self.view.backgroundColor = [UIColor redColor];
-
-
-    _VVV = [[UIView alloc] initWithFrame:CGRectMake(10, 100, 100, 100)];
-    _VVV.backgroundColor = [UIColor purpleColor];
-    _VVV.layer.masksToBounds = YES;
-    [self.view addSubview:_VVV];
+//    _VVV = [[UIView alloc] initWithFrame:CGRectMake(10, 100, 100, 100)];
+//    _VVV.backgroundColor = [UIColor purpleColor];
+//    _VVV.layer.masksToBounds = YES;
+//    [self.view addSubview:_VVV];
+    
+   
+    
+    [self test];
+   
+    
 }
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     //在iOS11开始才有动画效果
-    [UIView animateWithDuration:2 animations:^{
-        self.VVV.layer.cornerRadius = 40;
-        
-    } completion:^(BOOL finished) {
-        
-    }];
+//    [UIView animateWithDuration:2 animations:^{
+//        self.VVV.layer.cornerRadius = 40;
+//
+//    } completion:^(BOOL finished) {
+//
+//    }];
+    
+    
 }
+
 
 @end
