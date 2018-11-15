@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B263FAC2181AD6E00546E7B /* AAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B263FAB2181AD6E00546E7B /* AAViewController.m */; };
 		2B304558204F7D3D004C43E4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B304557204F7D3D004C43E4 /* AppDelegate.m */; };
 		2B30455E204F7D3D004C43E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B30455C204F7D3D004C43E4 /* Main.storyboard */; };
 		2B304560204F7D3D004C43E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B30455F204F7D3D004C43E4 /* Assets.xcassets */; };
@@ -17,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B263FAA2181AD6E00546E7B /* AAViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AAViewController.h; sourceTree = "<group>"; };
+		2B263FAB2181AD6E00546E7B /* AAViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AAViewController.m; sourceTree = "<group>"; };
 		2B304553204F7D3D004C43E4 /* JLTextView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JLTextView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B304556204F7D3D004C43E4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2B304557204F7D3D004C43E4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -66,6 +69,8 @@
 				2B304557204F7D3D004C43E4 /* AppDelegate.m */,
 				2B64C2DE20919D7600243FF0 /* ViewController.h */,
 				2B64C2DD20919D7600243FF0 /* ViewController.m */,
+				2B263FAA2181AD6E00546E7B /* AAViewController.h */,
+				2B263FAB2181AD6E00546E7B /* AAViewController.m */,
 				2B30455C204F7D3D004C43E4 /* Main.storyboard */,
 				2B30455F204F7D3D004C43E4 /* Assets.xcassets */,
 				2B304561204F7D3D004C43E4 /* LaunchScreen.storyboard */,
@@ -159,6 +164,7 @@
 				2B304566204F7D3D004C43E4 /* main.m in Sources */,
 				2B64C2DF20919D7700243FF0 /* ViewController.m in Sources */,
 				2B304558204F7D3D004C43E4 /* AppDelegate.m in Sources */,
+				2B263FAC2181AD6E00546E7B /* AAViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
